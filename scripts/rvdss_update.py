@@ -1174,6 +1174,6 @@ def main():
             # Round positive_tests columns to whole numbers and fill NaN with 0 before converting to integers
             concatenated_table[col] = concatenated_table[col].round(0).fillna(0).astype(int)
 		
-concatenated_table.to_csv('./target-data/season_2024_2025/lab_report.csv', index=True)
+	concatenated_table.to_csv('./target-data/season_2024_2025/lab_report.csv', index=True)
 if __name__ == '__main__':
     main()
