@@ -56,59 +56,59 @@ GEOS = {
 
 COL_MAPPERS = {   #RESP-DET			POSITIVE TESTS
 	'sarscov2tested' :  'sarscov2_tests',
-        'sarscov2test' :  'sarscov2_tests',
+    'sarscov2test' :  'sarscov2_tests',
 	'sarscov2_positive_positive_tests': 'sarscov2_positive_tests',
 	'sarscov2pos_positive_tests': 'sarscov2_positive_tests',
 	'hcovtested' : 'hcov_tests',
-        'hcovtest' : 'hcov_tests',
+    'hcovtest' : 'hcov_tests',
 	'hcov_positive_positive_tests':'hcov_positive_tests',
-        'hcovpos_positive_tests':'hcov_positive_tests',
+    'hcovpos_positive_tests':'hcov_positive_tests',
 	'ev_rvtested': 'ev_rv_tests',
-        'ev_rvtest': 'ev_rv_tests',
+    'ev_rvtest': 'ev_rv_tests',
 	'evrvtest': 'ev_rv_tests',
-        'evrv_tests': 'ev_rv_tests',
-        'entero_rhino_tests': 'ev_rv_tests',
-        'evrvtested': 'ev_rv_tests',	
+    'evrv_tests': 'ev_rv_tests',
+    'entero_rhino_tests': 'ev_rv_tests',
+    'evrvtested': 'ev_rv_tests',	
 	'ev_rv_positive_positive_tests':'ev_rv_positive_tests',
 	'ev_rvpos_positive_tests':'ev_rv_positive_tests',
-        'evrv_positive_positive_tests':'ev_rv_positive_tests',
-        'evrv_positive_tests':'ev_rv_positive_tests',
-        'evrvpos_positive_tests':'ev_rv_positive_tests',
-        'entero_rhinotested': 'ev_rv_tests',
-        'entero_rhinotest': 'ev_rv_tests',
-        'entero_rhino_positive_tests':'ev_rv_positive_tests',
-        'entero_rhino_positive_positive_tests':'ev_rv_positive_tests',
-        'entero_rhinopos_positive_tests': 'ev_rv_positive_tests',
-        'entero_rhino_pct_positive':'ev_rv_pct_positive',
-        'evrv_pct_positive':'ev_rv_pct_positive',
+    'evrv_positive_positive_tests':'ev_rv_positive_tests',
+    'evrv_positive_tests':'ev_rv_positive_tests',
+    'evrvpos_positive_tests':'ev_rv_positive_tests',
+    'entero_rhinotested': 'ev_rv_tests',
+    'entero_rhinotest': 'ev_rv_tests',
+    'entero_rhino_positive_tests':'ev_rv_positive_tests',
+    'entero_rhino_positive_positive_tests':'ev_rv_positive_tests',
+    'entero_rhinopos_positive_tests': 'ev_rv_positive_tests',
+    'entero_rhino_pct_positive':'ev_rv_pct_positive',
+    'evrv_pct_positive':'ev_rv_pct_positive',
 	'hmpvtested':'hmpv_tests',
-        'hmpvtest':'hmpv_tests',
+    'hmpvtest':'hmpv_tests',
 	'hmpv_positive_positive_tests': 'hmpv_positive_tests',
-        'hmpvpos_positive_tests': 'hmpv_positive_tests',
+    'hmpvpos_positive_tests': 'hmpv_positive_tests',
 	'advtested':'adv_tests',
-        'advtest':'adv_tests',
-	'adv_positive_positive_tests': 'adv_positive_tests',
-        'advpos_positive_tests': 'adv_positive_tests',
-	'rsvtested':'rsv_tests',
-        'rsvtest':'rsv_tests',
-	'rsv_positive_positive_tests': 'rsv_positive_tests',
-        'rsvpos_positive_tests': 'rsv_positive_tests',
-	'hpivtested':'hpiv_tests',
-        'hpivtest':'hpiv_tests',
+    'advtest':'adv_tests',
+    'adv_positive_positive_tests': 'adv_positive_tests',
+    'advpos_positive_tests': 'adv_positive_tests',
+    'rsvtested':'rsv_tests',
+    'rsvtest':'rsv_tests',
+    'rsv_positive_positive_tests': 'rsv_positive_tests',
+    'rsvpos_positive_tests': 'rsv_positive_tests',
+    'hpivtested':'hpiv_tests',
+    'hpivtest':'hpiv_tests',
 	# calculate by summing the numbers
 
-	'flutested':'flu_tests',
-	'flutest':'flu_tests',
+    'flutested':'flu_tests',
+    'flutest':'flu_tests',
 
-	'flua_positive_positive_tests':'flua_positive_tests',
-        'fluapos_positive_tests':'flua_positive_tests',
-	'flub_positive_positive_tests':'flub_positive_tests',
-	'flubpos_positive_tests':'flub_positive_tests',
-        'flu_a_positive_tests':'flua_positive_tests',
-        'flu_b_positive_tests':'flub_positive_tests',
-        'flu_a_pct_positive':'flua_pct_positive',
-        'flu_b_pct_positive':'flub_pct_positive'
-		}
+    'flua_positive_positive_tests':'flua_positive_tests',
+    'fluapos_positive_tests':'flua_positive_tests',
+    'flub_positive_positive_tests':'flub_positive_tests',
+    'flubpos_positive_tests':'flub_positive_tests',
+    'flu_a_positive_tests':'flua_positive_tests',
+    'flu_b_positive_tests':'flub_positive_tests',
+    'flu_a_pct_positive':'flua_pct_positive',
+    'flu_b_pct_positive':'flub_pct_positive'
+	}
 
 LOC_CORRECTION = {
     'ca':'nation',
@@ -1174,7 +1174,7 @@ def main():
             # Round positive_tests columns to whole numbers and fill NaN with 0 before converting to integers
             concatenated_table[col] = concatenated_table[col].round(0).fillna(0).astype(int)
 		
-    concatenated_table.to_csv('./target-data/season_2024_2025/lab_report.csv', index=True)#directory+"/" + 
+    concatenated_table.to_csv('./target-data/season_2024_2025/lab_report.csv', index=False)
    
 if __name__ == '__main__':
     main()
