@@ -966,8 +966,8 @@ def get_season_reports(url):
 
         # create path to save files
         path = "./target-data/season_" + season[0]+"_"+season[1]
-		if not os.path.exists(path):
-	        os.makedirs(path)
+        if not os.path.exists(path):
+            os.makedirs(path)
 
         # combine all the positive tables
         combined_positive_tables=pd.concat(positive_tables,axis=1)
@@ -1003,7 +1003,7 @@ def get_season_reports(url):
     # Group by the specified columns and take the row with the latest 'issue' date for each group
     #concatenated_table = concatenated_table.loc[concatenated_table.groupby(['epiweek', 'time_value', 'geo_type', 'geo_value'])['issue'].idxmin()]
 
-	concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
+    concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
     concatenated_table = concatenated_table.groupby(['time_value', 'geo_type', 'geo_value']).apply(lambda x: x.bfill()).sort_values(by='issue', ascending=False)
     concatenated_table = concatenated_table.drop_duplicates(subset=['time_value', 'geo_type', 'geo_value'], keep='first')
 
@@ -1123,7 +1123,7 @@ def main():
     weekly_data, positive_data = process_tables(weekly_data, positive_data, COL_MAPPERS, viruses)
 
 
- 	path1 = './target-data/season_2024_2025/respiratory_detections.csv'
+    path1 = './target-data/season_2024_2025/respiratory_detections.csv'
     path2 = './target-data/season_2024_2025/positive_tests.csv'
 
 
@@ -1176,4 +1176,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
