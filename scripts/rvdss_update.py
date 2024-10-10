@@ -55,67 +55,88 @@ GEOS = {
  }
 
 COL_MAPPERS = {   #RESP-DET			POSITIVE TESTS
-			'sarscov2tested' :  'sarscov2_tests',
-            'sarscov2test' :  'sarscov2_tests',
-			'sarscov2_positive_positive_tests': 'sarscov2_positive_tests',
-            'sarscov2pos_positive_tests': 'sarscov2_positive_tests',
-			
-			'hcovtested' : 'hcov_tests',
-            'hcovtest' : 'hcov_tests',
-			'hcov_positive_positive_tests':'hcov_positive_tests',
-            'hcovpos_positive_tests':'hcov_positive_tests',
+	'sarscov2tested' :  'sarscov2_tests',
+        'sarscov2test' :  'sarscov2_tests',
+	'sarscov2_positive_positive_tests': 'sarscov2_positive_tests',
+	'sarscov2pos_positive_tests': 'sarscov2_positive_tests',
+	'hcovtested' : 'hcov_tests',
+        'hcovtest' : 'hcov_tests',
+	'hcov_positive_positive_tests':'hcov_positive_tests',
+        'hcovpos_positive_tests':'hcov_positive_tests',
+	'ev_rvtested': 'ev_rv_tests',
+        'ev_rvtest': 'ev_rv_tests',
+	'evrvtest': 'ev_rv_tests',
+        'evrv_tests': 'ev_rv_tests',
+        'entero_rhino_tests': 'ev_rv_tests',
+        'evrvtested': 'ev_rv_tests',	
+	'ev_rv_positive_positive_tests':'ev_rv_positive_tests',
+	'ev_rvpos_positive_tests':'ev_rv_positive_tests',
+        'evrv_positive_positive_tests':'ev_rv_positive_tests',
+        'evrv_positive_tests':'ev_rv_positive_tests',
+        'evrvpos_positive_tests':'ev_rv_positive_tests',
+        'entero_rhinotested': 'ev_rv_tests',
+        'entero_rhinotest': 'ev_rv_tests',
+        'entero_rhino_positive_tests':'ev_rv_positive_tests',
+        'entero_rhino_positive_positive_tests':'ev_rv_positive_tests',
+        'entero_rhinopos_positive_tests': 'ev_rv_positive_tests',
+        'entero_rhino_pct_positive':'ev_rv_pct_positive',
+        'evrv_pct_positive':'ev_rv_pct_positive',
+	'hmpvtested':'hmpv_tests',
+        'hmpvtest':'hmpv_tests',
+	'hmpv_positive_positive_tests': 'hmpv_positive_tests',
+        'hmpvpos_positive_tests': 'hmpv_positive_tests',
+	'advtested':'adv_tests',
+        'advtest':'adv_tests',
+	'adv_positive_positive_tests': 'adv_positive_tests',
+        'advpos_positive_tests': 'adv_positive_tests',
+	'rsvtested':'rsv_tests',
+        'rsvtest':'rsv_tests',
+	'rsv_positive_positive_tests': 'rsv_positive_tests',
+        'rsvpos_positive_tests': 'rsv_positive_tests',
+	'hpivtested':'hpiv_tests',
+        'hpivtest':'hpiv_tests',
+	# calculate by summing the numbers
 
-			'ev_rvtested': 'ev_rv_tests',
-            'ev_rvtest': 'ev_rv_tests',
-            'evrvtest': 'ev_rv_tests',
-            'evrv_tests': 'ev_rv_tests',
-            'entero_rhino_tests': 'ev_rv_tests',
-            'evrvtested': 'ev_rv_tests',
-			'ev_rv_positive_positive_tests':'ev_rv_positive_tests',
-            'ev_rvpos_positive_tests':'ev_rv_positive_tests',
-            'evrv_positive_positive_tests':'ev_rv_positive_tests',
-            'evrv_positive_tests':'ev_rv_positive_tests',
-            'evrvpos_positive_tests':'ev_rv_positive_tests',
-            'entero_rhinotested': 'ev_rv_tests',
-            'entero_rhinotest': 'ev_rv_tests',
-            'entero_rhino_positive_tests':'ev_rv_positive_tests',
-            'entero_rhino_positive_positive_tests':'ev_rv_positive_tests',
-            'entero_rhinopos_positive_tests': 'ev_rv_positive_tests',
-            'entero_rhino_pct_positive':'ev_rv_pct_positive',
-            'evrv_pct_positive':'ev_rv_pct_positive',
+	'flutested':'flu_tests',
+	'flutest':'flu_tests',
 
-			'hmpvtested':'hmpv_tests',
-            'hmpvtest':'hmpv_tests',
-			'hmpv_positive_positive_tests': 'hmpv_positive_tests',
-            'hmpvpos_positive_tests': 'hmpv_positive_tests',
-
-			'advtested':'adv_tests',
-            'advtest':'adv_tests',
-			'adv_positive_positive_tests': 'adv_positive_tests',
-            'advpos_positive_tests': 'adv_positive_tests',
-
-			'rsvtested':'rsv_tests',
-            'rsvtest':'rsv_tests',
-			'rsv_positive_positive_tests': 'rsv_positive_tests',
-            'rsvpos_positive_tests': 'rsv_positive_tests',
-
-			'hpivtested':'hpiv_tests',
-            'hpivtest':'hpiv_tests',
-			# calculate by summing the numbers
-
-			'flutested':'flu_tests',
-            'flutest':'flu_tests',
-
-			'flua_positive_positive_tests':'flua_positive_tests',
-            'fluapos_positive_tests':'flua_positive_tests',
-			'flub_positive_positive_tests':'flub_positive_tests',
-            'flubpos_positive_tests':'flub_positive_tests',
-            'flu_a_positive_tests':'flua_positive_tests',
-            'flu_b_positive_tests':'flub_positive_tests',
-            'flu_a_pct_positive':'flua_pct_positive',
-            'flu_b_pct_positive':'flub_pct_positive'
+	'flua_positive_positive_tests':'flua_positive_tests',
+        'fluapos_positive_tests':'flua_positive_tests',
+	'flub_positive_positive_tests':'flub_positive_tests',
+	'flubpos_positive_tests':'flub_positive_tests',
+        'flu_a_positive_tests':'flua_positive_tests',
+        'flu_b_positive_tests':'flub_positive_tests',
+        'flu_a_pct_positive':'flua_pct_positive',
+        'flu_b_pct_positive':'flub_pct_positive'
 		}
 
+LOC_CORRECTION = {
+    'ca':'nation',
+    'on':'province',
+    'qc':'province',
+    'ns':'province',
+    'nb':'province',
+    'mb':'province',
+    'bc':'province',
+    'pe':'province',
+    'sk':'province',
+    'ab':'province',
+    'nl':'province',
+    'nt':'territory',
+    'yk':'territory',
+    'nu':'territory',
+}
+
+
+COLUMNS_TO_MAX = ['flu_tests', 'flu_positive_tests','flua_positive_tests', 'flub_positive_tests', 'flua_pct_positive', 'flub_pct_positive',  'flu_pct_positive',
+                  'rsv_tests', 'rsv_positive_tests', 'rsv_pct_positive',
+                  'hpiv_tests', 'hpiv_positive_tests', 'hpiv_pct_positive',
+                  'adv_tests', 'adv_positive_tests', 'adv_pct_positive',
+                  'hmpv_tests', 'hmpv_positive_tests', 'hmpv_pct_positive',
+                  'ev_rv_tests', 'ev_rv_positive_tests',  'ev_rv_pct_positive'
+                  'hcov_tests', 'hcov_positive_tests',   'hcov_pct_positive', 
+                  'sarscov2_tests', 'sarscov2_positive_tests', 'sarscov2_pct_positive'
+                ]
 
 # Regions are groups of provinces that are geographically close together. Some single provinces are reported as their own region (e.g. Québec, Ontario).
 REGIONS = ['atlantic','atl','at','province of québec','québec','qc','province of ontario','ontario','on',
@@ -146,6 +167,9 @@ HISTORIC_SEASON_URL = (HISTORIC_SEASON_REPORTS_URL.format(year_range = year_rang
         "2023-2024"
         )
 )
+
+HISTORIC_SEASON_URL_CHECKPOINT = []
+
 
 RESP_COUNTS_OUTPUT_FILE = "respiratory_detections.csv"
 POSITIVE_TESTS_OUTPUT_FILE = "positive_tests.csv"
@@ -204,7 +228,7 @@ def get_revised_data(base_url):
     # Get update date
     update_date_url =  base_url + DASHBOARD_UPDATE_DATE_FILE
     update_date_url_response = requests.get(update_date_url, headers=headers)
-    update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d")
+    update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d") #"%m/%d/%Y %H:%M:%S"
 
     # Get update data
     url = base_url+DASHBOARD_DATA_FILE
@@ -287,8 +311,8 @@ def get_weekly_data(base_url,start_year):
     df_weekly['geo_value'] = [abbreviate_geo(g) for g in df_weekly['geo_value']]
     df_weekly['geo_type'] = [create_geo_types(g,"lab") for g in df_weekly['geo_value']]
 
-    if df_weekly.columns.isin(["weekorder","date","week"]).all():
-        df_weekly=df_weekly.drop(["weekorder","date","week"],axis=1)
+    #if df_weekly.columns.isin(["weekorder","date","week"]).all():
+    df_weekly=df_weekly.drop(["weekorder","date","week"],axis=1)
 
     return(df_weekly)
 
@@ -750,6 +774,10 @@ def process_tables(all_respiratory_detection_table, all_positive_tables, COL_MAP
         columns=all_respiratory_detection_table.filter(regex=r'fluah1|fluah3|fluauns').columns
     )
 
+    all_positive_tables = all_positive_tables.drop(
+        columns=all_positive_tables.filter(regex=r'fluah1|fluah3|fluauns').columns
+    )
+
     # Step 4: Rename and merge duplicate columns in both tables
     all_respiratory_detection_table = rename_and_merge_duplicate_columns(all_respiratory_detection_table)
     all_positive_tables = rename_and_merge_duplicate_columns(all_positive_tables)
@@ -938,14 +966,14 @@ def get_season_reports(url):
 
         # create path to save files
         path = "./target-data/season_" + season[0]+"_"+season[1]
+		if not os.path.exists(path):
+        	os.makedirs(path)
 
         # combine all the positive tables
         combined_positive_tables=pd.concat(positive_tables,axis=1)
 
         # Check if the indices are already in the season table
         # If not, add the weeks tables into the season table
-
-        # check for deduplication pandas
         if not respiratory_detection_table.index.isin(all_respiratory_detection_table.index).any():
             all_respiratory_detection_table= pd.concat([all_respiratory_detection_table,respiratory_detection_table])
 
@@ -960,41 +988,144 @@ def get_season_reports(url):
     all_respiratory_detection_table, all_positive_tables = process_tables( all_respiratory_detection_table, all_positive_tables, 
                                                                           COL_MAPPERS, viruses)
 
-    if not os.path.exists(path):
-        os.makedirs(path)
 
     # write files to csvs
-    all_respiratory_detection_table.to_csv(path+"/" + RESP_COUNTS_OUTPUT_FILE, index=True)
-    all_positive_tables.to_csv(path+"/" + POSITIVE_TESTS_OUTPUT_FILE, index=True)
+    #all_respiratory_detection_table.to_csv(path+"/" + RESP_COUNTS_OUTPUT_FILE, index=True)
+    #all_positive_tables.to_csv(path+"/" + POSITIVE_TESTS_OUTPUT_FILE, index=True)
 
+	# Merge repiratory_detection and positive_test files
     concatenated_table = pd.concat([all_respiratory_detection_table, all_positive_tables], axis=0)
-    concatenated_table.to_csv(path+"/" + 'lab_report.csv', index=True)
+    concatenated_table = concatenated_table.reset_index()
+	
+    concatenated_table = concatenated_table[concatenated_table['geo_value'].isin(LOC_CORRECTION.keys())]
+    concatenated_table['geo_type'] = concatenated_table['geo_value'].map(LOC_CORRECTION)
+
+    # Group by the specified columns and take the row with the latest 'issue' date for each group
+    #concatenated_table = concatenated_table.loc[concatenated_table.groupby(['epiweek', 'time_value', 'geo_type', 'geo_value'])['issue'].idxmin()]
+
+	concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
+    concatenated_table = concatenated_table.groupby(['time_value', 'geo_type', 'geo_value']).apply(lambda x: x.bfill()).sort_values(by='issue', ascending=False)
+    concatenated_table = concatenated_table.drop_duplicates(subset=['time_value', 'geo_type', 'geo_value'], keep='first')
+
+    concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore')
+    concatenated_table = concatenated_table.drop(columns=['epiweek'], errors='ignore')
+
+    
+    for col in concatenated_table.columns:
+        if 'pct_positive' in col:
+            # Round percentage columns to 3 decimal places
+            concatenated_table[col] = concatenated_table[col].round(3)
+        elif 'positive_tests' in col:
+            # Round positive_tests columns to whole numbers and fill NaN with 0 before converting to integers
+            concatenated_table[col] = concatenated_table[col].round(0).fillna(0).astype(int)
+
+    # Update the geo_type based on LOC_CORRECTION values
+    concatenated_table.to_csv(path+"/" + 'lab_report.csv', index=False)
+    HISTORIC_SEASON_URL_CHECKPOINT.append(url)
 
 def main():
-    # Suppress all warnings
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore")
-        # Check if previous seasons' lab data exists
-        if os.path.exists('./target-data/season_2023_2024/lab_report.csv')==False:
-            [get_season_reports(url) for url in HISTORIC_SEASON_URL]
-    
-    directory = './target-data/season_2024_2025/'
+    max_retries=3
+    retries = 0
+    while retries < max_retries:
+        try:
+            # Suppress all warnings
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", category=FutureWarning)
+                warnings.simplefilter("ignore", category=DeprecationWarning)
+                # Check if previous seasons' lab data exists
+                if os.path.exists('./target-data/season_2023_2024/lab_report.csv')==False:
+                    [get_season_reports(url) for url in HISTORIC_SEASON_URL if url not in HISTORIC_SEASON_URL_CHECKPOINT]
+            break
+        except requests.exceptions.RequestException as e:
+            # Handle specific connection errors
+            print(f"Connection error while accessing url: {e}")
+            
+            retries += 1
+            if retries < max_retries:
+                print(f"Retrying... (Attempt {retries}/{max_retries})")
+            else:
+                print(f"Max retries reached.")
 
-    # Check if the directory exists, and if not, create it
+
+	# Check if the directory exists, and if not, create it
+    directory = './target-data/season_2024_2025/'
     if not os.path.exists(directory):
         os.makedirs(directory)
 
 
-    weekly_data = get_weekly_data(DASHBOARD_BASE_URL,2024).set_index(['epiweek', 'time_value', 'issue', 'geo_type', 'geo_value'])
+    def get_weekly_data2(base_url,start_year):
+        headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+        }
+
+        # Get update date
+        update_date_url =  base_url + "RVD_UpdateDate.csv"
+        update_date_url_response = requests.get(update_date_url, headers=headers)
+        update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d")
+
+        # Get current week and year
+        summary_url =  base_url + "RVD_SummaryText.csv"
+        summary_url_response = requests.get(summary_url, headers=headers)
+        summary_df = pd.read_csv(io.StringIO(summary_url_response.text))
+
+        week_df = summary_df[(summary_df['Section'] == "summary") & (summary_df['Type']=="title")]
+        week_string = week_df.iloc[0]['Text'].lower()
+        current_week = int(re.search("week (.+?) ", week_string).group(1))
+
+        if current_week < LAST_WEEK_OF_YEAR:
+            current_year = start_year+1
+        else:
+            current_year = start_year
+
+        current_epiweek= Week(current_year,current_week)
+
+        # Get weekly data
+        weekly_url = base_url + "RVD_CurrentWeekTable.csv"
+        weekly_url_response = requests.get(weekly_url, headers=headers)
+        weekly_url_response.encoding='UTF-8'
+        df_weekly = pd.read_csv(io.StringIO(weekly_url_response.text))
+
+        df_weekly = df_weekly.rename(columns=lambda x: '_'.join(x.split('_')[1:]+x.split('_')[:1]))
+        df_weekly.insert(0,"epiweek",int(str(current_epiweek)))
+        df_weekly.insert(1,"time_value",str(current_epiweek.enddate()))
+        df_weekly.insert(2,"issue",update_date)
+        df_weekly.columns=[abbreviate_virus(c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'test\b','tests',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'pos\b','positive_tests',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'flua_','flu_a',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'flub_','flu_b',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'bpositive','b_positive',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'apositive','a_positive',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r'flu_ah1_','flu_ah1pdm09_',c) for c in df_weekly.columns]
+        df_weekly.columns=[re.sub(r' ','_',c) for c in df_weekly.columns]
+        df_weekly=df_weekly.rename(columns={'reportinglaboratory':"geo_value"})
+        df_weekly['geo_value'] = [abbreviate_geo(g) for g in df_weekly['geo_value']]
+        df_weekly['geo_type'] = [create_geo_types(g,"lab") for g in df_weekly['geo_value']]
+
+        df_weekly = df_weekly.drop(columns=['time_value','epiweek'])
+        df_weekly = df_weekly.rename(columns={'date':'time_value','week':'epiweek'})
+        #print(df_weekly.columns)
+        df_weekly['epiweek'] = df_weekly['epiweek'].astype(str)
+        df_weekly['epiweek'] = '2024' + df_weekly['epiweek']
+
+        if df_weekly.columns.isin(["weekorder","date","week"]).all():
+            df_weekly=df_weekly.drop(["weekorder","date","week"],axis=1)
+
+        return(df_weekly)
+
+
+    weekly_data = get_weekly_data2(DASHBOARD_BASE_URL,2024).set_index(['epiweek', 'time_value', 'issue', 'geo_type', 'geo_value'])
     positive_data = get_revised_data(DASHBOARD_BASE_URL)
     # print('weekly_data cols:', weekly_data.columns)
     # print('positive_data cols:', positive_data.columns)
 
     viruses = ['hcov', 'hmpv', 'sarscov2', 'rsv', 'hpiv', 'flu', 'adv', 'ev_rv']
-    weekly_data, positive_data = process_tables( weekly_data, positive_data, COL_MAPPERS, viruses)
+    weekly_data, positive_data = process_tables(weekly_data, positive_data, COL_MAPPERS, viruses)
 
-    path1 = './target-data/season_2024_2025/respiratory_detections.csv'
+
+ 	path1 = './target-data/season_2024_2025/respiratory_detections.csv'
     path2 = './target-data/season_2024_2025/positive_tests.csv'
+
 
     if os.path.exists(path1)==False:
         weekly_data.to_csv(path1,index=True)
@@ -1008,20 +1139,41 @@ def main():
     if os.path.exists(path2)==False:
         positive_data.to_csv(path2,index=True)
         old_positive_data = positive_data
+        # Rename a single column
+
     else:
         old_positive_data = pd.read_csv(path2).set_index(['epiweek', 'time_value', 'issue', 'geo_type', 'geo_value'])
         if positive_data.index.isin(old_positive_data.index).any() == False:
             old_positive_data= pd.concat([old_positive_data,positive_data],axis=0)
             old_positive_data.to_csv(path2,index=True)
 
-    if os.path.exists(path2)==True:
+    if os.path.exists(path2) and os.path.exists(path1) ==True:
         concatenated_table = pd.concat([old_detection_data, old_positive_data], axis=0)
     else:
         concatenated_table = pd.concat([weekly_data, positive_data], axis=0)
 
-    concatenated_table.to_csv('./target-data/season_2024_2025/lab_report.csv', index=True)#directory+"/" + 
-    print('con:' , concatenated_table)
+    
+    concatenated_table = concatenated_table.reset_index()
+    concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
 
+    # Update the geo_type based on LOC_CORRECTION values
+    concatenated_table = concatenated_table[concatenated_table['geo_value'].isin(LOC_CORRECTION.keys())]
+    concatenated_table['geo_type'] = concatenated_table['geo_value'].map(LOC_CORRECTION)
+
+    concatenated_table = concatenated_table.groupby(['time_value', 'geo_type', 'geo_value']).apply(lambda x: x.bfill()).sort_values(by='issue', ascending=False)
+    concatenated_table = concatenated_table.drop_duplicates(subset=['time_value', 'geo_type', 'geo_value'], keep='first')
+
+    concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore')
+    concatenated_table = concatenated_table.drop(columns=['epiweek','week','date','weekorder'], errors='ignore')
+    
+    for col in concatenated_table.columns:
+        if 'pct_positive' in col:
+            # Round percentage columns to 3 decimal places
+            concatenated_table[col] = concatenated_table[col].round(3)
+        elif 'positive_tests' in col:
+            # Round positive_tests columns to whole numbers and fill NaN with 0 before converting to integers
+            concatenated_table[col] = concatenated_table[col].round(0).fillna(0).astype(int)
 
 if __name__ == '__main__':
     main()
+
