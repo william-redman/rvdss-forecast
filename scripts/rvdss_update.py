@@ -967,7 +967,7 @@ def get_season_reports(url):
         # create path to save files
         path = "./target-data/season_" + season[0]+"_"+season[1]
 		if not os.path.exists(path):
-        	os.makedirs(path)
+	        os.makedirs(path)
 
         # combine all the positive tables
         combined_positive_tables=pd.concat(positive_tables,axis=1)
