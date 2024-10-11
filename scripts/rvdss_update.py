@@ -777,7 +777,13 @@ def process_tables(all_respiratory_detection_table, all_positive_tables, COL_MAP
     all_positive_tables = all_positive_tables.drop(
         columns=all_positive_tables.filter(regex=r'fluah1|fluah3|fluauns').columns
     )
+    all_respiratory_detection_table = all_respiratory_detection_table.drop(
+        columns=all_respiratory_detection_table.filter(regex=r'flu_ah1|flu_ah3|flu_auns').columns
+    )
 
+    all_positive_tables = all_positive_tables.drop(
+        columns=all_positive_tables.filter(regex=r'flu_ah1|flu_ah3|flu_auns').columns
+    )
     # Step 4: Rename and merge duplicate columns in both tables
     all_respiratory_detection_table = rename_and_merge_duplicate_columns(all_respiratory_detection_table)
     all_positive_tables = rename_and_merge_duplicate_columns(all_positive_tables)
