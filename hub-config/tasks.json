@@ -5,7 +5,7 @@
             "round_id_from_variable": true,
             "round_id": "reference_date",
             "model_tasks": [
-                {
+                {   // influenza
                     "task_ids": {
                         "reference_date": {
                             "required": null,
@@ -23,7 +23,7 @@
                         },
                         "target": {
                             "required": null,
-                            "optional": ["wk inc flu"]
+                            "optional": ["pct wk flu lab det"] // percentage of weekly influenza lab detections
                         },
                         "horizon": {
                             "required": null,
@@ -70,32 +70,215 @@
                     "output_type": {
                         "quantile": {
                             "output_type_id": {
-                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975],
+                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975], //percentage quantiles
                                 "optional": null
                             },
                             "value": {
-                                "type": "integer",
+                                "type": "double",
                                 "minimum": 0
                             }
                         }
                     },
                     "target_metadata": [
                         {
-                            "target_id": "wk inc flu",
-                            "target_name": "incident influenza detections",
-                            "target_units": "count",
+                            "target_id": "pct wk flu lab det",
+                            "target_name": "percentage of weekly influenza lab detections",
+                            "target_units": "percentage",
                             "target_keys": {
                                 "target": [
-                                    "wk inc flu"
+                                    "pct wk flu lab det"
                                 ]
                             },
-                            "target_type": "discrete",
-                            "description": "This target represents the count of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
+                            "target_type": "continuous",
+                            "description": "This target represents the percentage of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
+                            "is_step_ahead": true,
+                            "time_unit": "week"
+                        }
+                    ]
+                },
+                {   // covid
+                    "task_ids": {
+                        "reference_date": {
+                            "required": null,
+                            "optional": ["2024-10-19", "2024-10-26", "2024-11-02", "2024-11-09", 
+                            "2024-11-16", "2024-11-23", "2024-11-30", "2024-12-07", "2024-12-14", 
+                            "2024-12-21", "2024-12-28", "2025-01-04", "2025-01-11", "2025-01-18", 
+                            "2025-01-25", "2025-02-01", "2025-02-08", "2025-02-15", "2025-02-22", 
+                            "2025-03-01", "2025-03-08", "2025-03-15", "2025-03-22", "2025-03-29", 
+                            "2025-04-05", "2025-04-12", "2025-04-19", "2025-04-26", "2025-05-03", 
+                            "2025-05-10", "2025-05-17", "2025-05-24", "2025-05-31", "2025-06-07", 
+                            "2025-06-14", "2025-06-21", "2025-06-28", "2025-07-05", "2025-07-12", 
+                            "2025-07-19", "2025-07-26", "2025-08-02", "2025-08-09", "2025-08-16", 
+                            "2025-08-23", "2025-08-30"]
+                           
+                        },
+                        "target": {
+                            "required": null,
+                            "optional": ["pct wk covid lab det"] //weekly covid lab detections
+                        },
+                        "horizon": {
+                            "required": null,
+                            "optional": [-1, 0, 1, 2, 3]
+                        },
+                        "location": {
+                            "required": null,
+                            "optional": [
+                                "ca",
+                                "atlantic",
+                                "qc",
+                                "on",
+                                "prairies",
+                                "bc",
+                                "territories",
+                                "ab",
+                                "mb",
+                                "nb",
+                                "nl",
+                                "ns",
+                                "nt",
+                                "nu",
+                                "pe",
+                                "sk",
+                                "yk"
+                              
+                            ]
+                        },
+                        "target_end_date": {
+                            "required": null,
+                            "optional": ["2024-10-12", "2024-10-19", "2024-10-26", "2024-11-02", "2024-11-09", 
+                            "2024-11-16", "2024-11-23", "2024-11-30", "2024-12-07", "2024-12-14", 
+                            "2024-12-21", "2024-12-28", "2025-01-04", "2025-01-11", "2025-01-18", 
+                            "2025-01-25", "2025-02-01", "2025-02-08", "2025-02-15", "2025-02-22", 
+                            "2025-03-01", "2025-03-08", "2025-03-15", "2025-03-22", "2025-03-29", 
+                            "2025-04-05", "2025-04-12", "2025-04-19", "2025-04-26", "2025-05-03", 
+                            "2025-05-10", "2025-05-17", "2025-05-24", "2025-05-31", "2025-06-07", 
+                            "2025-06-14", "2025-06-21", "2025-06-28", "2025-07-05", "2025-07-12", 
+                            "2025-07-19", "2025-07-26", "2025-08-02", "2025-08-09", "2025-08-16", 
+                            "2025-08-23", "2025-08-30", "2025-09-06", "2025-09-13", "2025-09-20"]
+                           
+                        }
+                    },
+                    "output_type": {
+                        "quantile": {
+                            "output_type_id": {
+                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975], //percentage quantiles
+                                "optional": null
+                            },
+                            "value": {
+                                "type": "double",
+                                "minimum": 0
+                            }
+                        }
+                    },
+                    "target_metadata": [
+                        {
+                            "target_id": "pct wk covid lab det",
+                            "target_name": "percentage of weekly covid lab detections",
+                            "target_units": "percentage",
+                            "target_keys": {
+                                "target": [
+                                    "pct wk covid lab det"
+                                ]
+                            },
+                            "target_type": "continuous",
+                            "description": "This target represents the percentage of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
+                            "is_step_ahead": true,
+                            "time_unit": "week"
+                        }
+                    ]
+                },
+                {   // rsv
+                    "task_ids": {
+                        "reference_date": {
+                            "required": null,
+                            "optional": ["2024-10-19", "2024-10-26", "2024-11-02", "2024-11-09", 
+                            "2024-11-16", "2024-11-23", "2024-11-30", "2024-12-07", "2024-12-14", 
+                            "2024-12-21", "2024-12-28", "2025-01-04", "2025-01-11", "2025-01-18", 
+                            "2025-01-25", "2025-02-01", "2025-02-08", "2025-02-15", "2025-02-22", 
+                            "2025-03-01", "2025-03-08", "2025-03-15", "2025-03-22", "2025-03-29", 
+                            "2025-04-05", "2025-04-12", "2025-04-19", "2025-04-26", "2025-05-03", 
+                            "2025-05-10", "2025-05-17", "2025-05-24", "2025-05-31", "2025-06-07", 
+                            "2025-06-14", "2025-06-21", "2025-06-28", "2025-07-05", "2025-07-12", 
+                            "2025-07-19", "2025-07-26", "2025-08-02", "2025-08-09", "2025-08-16", 
+                            "2025-08-23", "2025-08-30"]
+                           
+                        },
+                        "target": {
+                            "required": null,
+                            "optional": ["pct wk rsv lab det"] //weekly rsv lab detections
+                        },
+                        "horizon": {
+                            "required": null,
+                            "optional": [-1, 0, 1, 2, 3]
+                        },
+                        "location": {
+                            "required": null,
+                            "optional": [
+                                "ca",
+                                "atlantic",
+                                "qc",
+                                "on",
+                                "prairies",
+                                "bc",
+                                "territories",
+                                "ab",
+                                "mb",
+                                "nb",
+                                "nl",
+                                "ns",
+                                "nt",
+                                "nu",
+                                "pe",
+                                "sk",
+                                "yk"
+                              
+                            ]
+                        },
+                        "target_end_date": {
+                            "required": null,
+                            "optional": ["2024-10-12", "2024-10-19", "2024-10-26", "2024-11-02", "2024-11-09", 
+                            "2024-11-16", "2024-11-23", "2024-11-30", "2024-12-07", "2024-12-14", 
+                            "2024-12-21", "2024-12-28", "2025-01-04", "2025-01-11", "2025-01-18", 
+                            "2025-01-25", "2025-02-01", "2025-02-08", "2025-02-15", "2025-02-22", 
+                            "2025-03-01", "2025-03-08", "2025-03-15", "2025-03-22", "2025-03-29", 
+                            "2025-04-05", "2025-04-12", "2025-04-19", "2025-04-26", "2025-05-03", 
+                            "2025-05-10", "2025-05-17", "2025-05-24", "2025-05-31", "2025-06-07", 
+                            "2025-06-14", "2025-06-21", "2025-06-28", "2025-07-05", "2025-07-12", 
+                            "2025-07-19", "2025-07-26", "2025-08-02", "2025-08-09", "2025-08-16", 
+                            "2025-08-23", "2025-08-30", "2025-09-06", "2025-09-13", "2025-09-20"]
+                           
+                        }
+                    },
+                    "output_type": {
+                        "quantile": {
+                            "output_type_id": {
+                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975], //percentage quantiles
+                                "optional": null
+                            },
+                            "value": {
+                                "type": "double",
+                                "minimum": 0
+                            }
+                        }
+                    },
+                    "target_metadata": [
+                        {
+                            "target_id": "pct wk rsv lab det",
+                            "target_name": "percentage of weekly rsv lab detections",
+                            "target_units": "percentage",
+                            "target_keys": {
+                                "target": [
+                                    "pct wk rsv lab det"
+                                ]
+                            },
+                            "target_type": "continuous",
+                            "description": "This target represents the percentage of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
                             "is_step_ahead": true,
                             "time_unit": "week"
                         }
                     ]
                 }
+
             ],
             "submissions_due": {
                 "relative_to": "reference_date",
