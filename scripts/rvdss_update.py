@@ -125,6 +125,10 @@ LOC_CORRECTION = {
     'nt':'territory',
     'yk':'territory',
     'nu':'territory',
+    'atlantic':'region',
+    'prairies':'region',
+    'territories':'region'
+
 }
 
 
