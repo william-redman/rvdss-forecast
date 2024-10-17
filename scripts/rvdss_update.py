@@ -128,15 +128,7 @@ LOC_CORRECTION = {
 }
 
 
-COLUMNS_TO_MAX = ['flu_tests', 'flu_positive_tests','flua_positive_tests', 'flub_positive_tests', 'flua_pct_positive', 'flub_pct_positive',  'flu_pct_positive',
-                  'rsv_tests', 'rsv_positive_tests', 'rsv_pct_positive',
-                  'hpiv_tests', 'hpiv_positive_tests', 'hpiv_pct_positive',
-                  'adv_tests', 'adv_positive_tests', 'adv_pct_positive',
-                  'hmpv_tests', 'hmpv_positive_tests', 'hmpv_pct_positive',
-                  'ev_rv_tests', 'ev_rv_positive_tests',  'ev_rv_pct_positive'
-                  'hcov_tests', 'hcov_positive_tests',   'hcov_pct_positive', 
-                  'sarscov2_tests', 'sarscov2_positive_tests', 'sarscov2_pct_positive'
-                ]
+COLUMNS_TARGET = ['time_value','geo_type','geo_value','flu_pct_positive','rsv_pct_positive','sarscov2_pct_positive']
 
 # Regions are groups of provinces that are geographically close together. Some single provinces are reported as their own region (e.g. Québec, Ontario).
 REGIONS = ['atlantic','atl','at','province of québec','québec','qc','province of ontario','ontario','on',
@@ -1005,8 +997,8 @@ def get_season_reports(url):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    all_respiratory_detection_table.to_csv(path_aux+"/" + RESP_COUNTS_OUTPUT_FILE, index=True)
-    all_positive_tables.to_csv(path_aux+"/" + POSITIVE_TESTS_OUTPUT_FILE, index=True)
+    #all_respiratory_detection_table.to_csv(path_aux+"/" + RESP_COUNTS_OUTPUT_FILE, index=True)
+    #all_positive_tables.to_csv(path_aux+"/" + POSITIVE_TESTS_OUTPUT_FILE, index=True)
 
 	# Merge repiratory_detection and positive_test files
     concatenated_table = pd.concat([all_respiratory_detection_table, all_positive_tables], axis=0)
@@ -1015,9 +1007,6 @@ def get_season_reports(url):
     concatenated_table = concatenated_table[concatenated_table['geo_value'].isin(LOC_CORRECTION.keys())]
     concatenated_table['geo_type'] = concatenated_table['geo_value'].map(LOC_CORRECTION)
 
-    # Group by the specified columns and take the row with the latest 'issue' date for each group
-    #concatenated_table = concatenated_table.loc[concatenated_table.groupby(['epiweek', 'time_value', 'geo_type', 'geo_value'])['issue'].idxmin()]
-
     concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
     concatenated_table = concatenated_table.groupby(['time_value', 'geo_type', 'geo_value']).apply(lambda x: x.bfill()).sort_values(by='issue', ascending=False)
     concatenated_table = concatenated_table.drop_duplicates(subset=['time_value', 'geo_type', 'geo_value'], keep='first')
@@ -1025,18 +1014,18 @@ def get_season_reports(url):
     concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore')
     concatenated_table = concatenated_table.drop(columns=['epiweek'], errors='ignore')
 
-    concatenated_table = concatenated_table.drop(columns=[col for col in concatenated_table.columns if 'pct_positive' in col])
+    #concatenated_table = concatenated_table.drop(columns=[col for col in concatenated_table.columns if 'pct_positive' in col])
+    concatenated_table.to_csv(path+"/" + 'raw.csv', index=False)
     
-    for col in concatenated_table.columns:
-        # if 'pct_positive' in col:
-        #     # Round percentage columns to 3 decimal places
-        #     concatenated_table[col] = concatenated_table[col].round(3)
-        if 'positive_tests' in col:
-            # Round positive_tests columns to whole numbers and fill NaN with 0 before converting to integers
-            concatenated_table[col] = concatenated_table[col].round(0).fillna(0).astype(int)
+    for col in concatenated_table.columns:   
+        if col not in COLUMNS_TARGET:
+            concatenated_table = concatenated_table.drop(columns=[col])
+        elif 'pct_positive' in col:
+            # Round percentage columns to 3 decimal places
+            concatenated_table[col] = concatenated_table[col].round(3)
 
-    # Update the geo_type based on LOC_CORRECTION values
-    concatenated_table.to_csv(path+"/" + 'lab_report.csv', index=False)
+    concatenated_table.to_csv(path+"/" + 'data_report.csv', index=False)
+
     HISTORIC_SEASON_URL_CHECKPOINT.append(url)
 
 def main():
@@ -1049,7 +1038,7 @@ def main():
                 warnings.simplefilter("ignore", category=FutureWarning)
                 warnings.simplefilter("ignore", category=DeprecationWarning)
                 # Check if previous seasons' lab data exists
-                if os.path.exists('./auxiliary-data/target-data-archive/season_2023_2024/lab_report.csv')==False:
+                if os.path.exists('./auxiliary-data/target-data-archive/season_2023_2024/data_report.csv')==False:
                     [get_season_reports(url) for url in HISTORIC_SEASON_URL if url not in HISTORIC_SEASON_URL_CHECKPOINT]
             break
         except requests.exceptions.RequestException as e:
@@ -1139,12 +1128,12 @@ def main():
     weekly_data, positive_data = process_tables(weekly_data, positive_data, COL_MAPPERS, viruses)
 
 
-    path1 = './auxiliary-data/season_2024_2025/respiratory_detections.csv'
-    path2 = './auxiliary-data/season_2024_2025/positive_tests.csv'
+    path1 = './auxiliary-data/season_2024_2025_raw_files/respiratory_detections.csv'
+    path2 = './auxiliary-data/season_2024_2025_raw_files/positive_tests.csv'
 
             
     if os.path.exists(path1)==False:
-        os.makedirs('./auxiliary-data/season_2024_2025/')
+        os.makedirs('./auxiliary-data/season_2024_2025_raw_files/')
         weekly_data.to_csv(path1,index=True)
         old_detection_data = weekly_data
     else:
@@ -1156,8 +1145,6 @@ def main():
     if os.path.exists(path2)==False:
         positive_data.to_csv(path2,index=True)
         old_positive_data = positive_data
-        # Rename a single column
-
     else:
         old_positive_data = pd.read_csv(path2).set_index(['epiweek', 'time_value', 'issue', 'geo_type', 'geo_value'])
         if positive_data.index.isin(old_positive_data.index).any() == False:
@@ -1183,17 +1170,16 @@ def main():
     concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore')
     concatenated_table = concatenated_table.drop(columns=['epiweek','week','date','weekorder'], errors='ignore')
     
-    concatenated_table = concatenated_table.drop(columns=[col for col in concatenated_table.columns if 'pct_positive' in col])
-
-    for col in concatenated_table.columns:
-        # if 'pct_positive' in col:
-        #     # Round percentage columns to 3 decimal places
-        #     concatenated_table[col] = concatenated_table[col].round(3)
-        if 'positive_tests' in col:
-            # Round positive_tests columns to whole numbers and fill NaN with 0 before converting to integers
-            concatenated_table[col] = concatenated_table[col].round(0).fillna(0).astype(int)
+    concatenated_table.to_csv('./auxiliary-data/season_2024_2025_raw_files/raw.csv', index=False)
+    
+    for col in concatenated_table.columns:   
+        if col not in COLUMNS_TARGET:
+            concatenated_table = concatenated_table.drop(columns=[col])
+        elif 'pct_positive' in col:
+            # Round percentage columns to 3 decimal places
+            concatenated_table[col] = concatenated_table[col].round(3)
 		
-    concatenated_table.to_csv('./target-data/season_2024_2025/lab_report.csv', index=False)
+    concatenated_table.to_csv('./target-data/season_2024_2025/data_report.csv', index=False)
    
 if __name__ == '__main__':
     main()
