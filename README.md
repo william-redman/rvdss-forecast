@@ -1,5 +1,7 @@
-# [AI4Casting Hub – Respiratory Virus Detection Surveillance System (RVDSS) Data Forecasting (2024-2025)](https://sites.uoguelph.ca/4castinghub/rvdss/)
+# [AI4Casting Hub – Respiratory Virus Detection Surveillance System (RVDSS) Data Forecasting (2024-2025)](https://4castinghub.uoguelph.ca/respiratory-virus-detections/)
 Welcome to the AI4Casting Hub's repository for the 2024-2025 Respiratory Virus Detection Surveillance System (RVDSS) Forecasting Challenge. This repository is dedicated to collecting weekly forecast data on respiratory virus detections across Canada. The challenge focuses on predicting the spread and detection of key respiratory viruses such as influenza, RSV, and COVID-19. RVDSS collects data from a network of laboratories across Canada, providing a valuable source of surveillance data to guide public health decisions.
+
+[**Link to AI4Casting Hub's RVDSS Forecasting Official Page**](https://4castinghub.uoguelph.ca/respiratory-virus-detections)
 
 ### Challenge Overview
 The AI4Casting Hub is organizing a collaborative nowcasting and forecasting challenge for respiratory virus detections using RVDSS data. The challenge starts on **October 21, 2024**, and runs until **May 1, 2025**. Participating teams are asked to provide weekly probabilistic hindcasts, nowcasts, and forecasts for respiratory virus detections, at national, provincial and regional levels.
