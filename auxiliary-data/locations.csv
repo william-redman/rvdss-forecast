@@ -1,0 +1,18 @@
+geo_type,geo_abbr,geo_name
+nation,ca,Canada
+province,on,Ontario
+province,qc,Quebec
+province,ns,Nova Scotia
+province,nb,New Brunswick
+province,mb,Manitoba
+province,bc,British Columbia
+province,pe,Prince Edward Island
+province,sk,Saskatchewan
+province,ab,Alberta
+province,nl,Newfoundland and Labrador
+territory,nt,Northwest Territories
+territory,yk,Yukon
+territory,nu,Nunavut
+region,atlantic,Atlantic
+region,prairies,Prairies
+region,territories,Territories
