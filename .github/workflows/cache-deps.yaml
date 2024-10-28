@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-deps-cache-on-main:
-    if: ${{ github.repository_owner == 'ai4castinghub' }}
+    if: ${{ github.repository_owner == 'ai4castinghub-admin' }}
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
