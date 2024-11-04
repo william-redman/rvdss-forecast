@@ -17,7 +17,7 @@ Teams will be tasked with forecasting the number of virus detections for:
 * The current week (horizon 0)
 * The following three weeks (horizon 1,2,3)
 
-These predictions will be evaluated against confirmed RVDSS surveillance data released by public health agencies across Canada. For detailed information regarding the forecasting targets refer [model-output/README.md](https://github.com/ai4castinghub/rvdss-forecast/tree/main/model-output) file.
+These predictions will be evaluated against confirmed RVDSS surveillance data released by public health agencies across Canada. For detailed information regarding the forecasting targets refer [model-output/README.md](https://github.com/ai4castinghub/rvdss-forecast/tree/main/model-output/README.md) file.
 
 ### Key Dates
 * **Challenge Start Date**: November 4, 2024
