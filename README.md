@@ -4,7 +4,7 @@ Welcome to the AI4Casting Hub's repository for the 2024-2025 Respiratory Virus D
 [**Link to AI4Casting Hub's RVDSS Forecasting Official Page**](https://4castinghub.uoguelph.ca/respiratory-virus-detections)
 
 ### Challenge Overview
-The AI4Casting Hub is organizing a collaborative nowcasting and forecasting challenge for respiratory virus detections using RVDSS data. The challenge starts on **October 21, 2024**, and runs until **May 1, 2025**. Participating teams are asked to provide weekly probabilistic hindcasts, nowcasts, and forecasts for respiratory virus detections, at national, provincial and regional levels.
+The AI4Casting Hub is organizing a collaborative nowcasting and forecasting challenge for respiratory virus detections using RVDSS data. The challenge starts on **November 4, 2024**, and runs until **May 2, 2025**. Participating teams are asked to provide weekly probabilistic hindcasts, nowcasts, and forecasts for respiratory virus detections, at national, provincial and regional levels.
 
 ### Forecasting Targets
 This challenge focuses on three primary targets:
@@ -20,15 +20,15 @@ Teams will be tasked with forecasting the number of virus detections for:
 These predictions will be evaluated against confirmed RVDSS surveillance data released by public health agencies across Canada.
 
 ### Key Dates
-* **Challenge Start Date**: October 21, 2024
-* **Challenge End Date**: May 1, 2025
-* **Weekly Submission Deadline**: Tuesdays at 5 PM Eastern Time ("Forecast Due Date"). Submissions should cover the reference week ending on the Saturday following the Forecast Due Date.
+* **Challenge Start Date**: November 4, 2024
+* **Challenge End Date**: May 2, 2025
+* **Weekly Submission Deadline**: Thursdays at 5 PM Eastern Time ("Forecast Due Date"). Submissions should cover the reference week ending on the Saturday following the Forecast Due Date.
 
 The reference week corresponds to the epidemiological week (EW) running from Sunday to Saturday. Teams are expected to submit forecasts for the end of the reference week and the following three weeks. While teams are encouraged to forecast for all targets and time horizons, it is not required to submit predictions for every time period or virus. Forecasts for the previous week’s virus detections (horizon -1) are optional and will not be included in the primary scoring but may be helpful for calibration.
 
 ### Important Notes
 Data on virus detections from the preceding week will be made available by Thursday each week.
-Forecasts for a horizon of -1 (the previous week) are optional and will not be factored into official evaluations, but submissions are welcome as they can help with model calibration.
+Forecasts for a horizon of -1 (the previous week) are optional and will not be factored into official evaluations.
 
 Each forecast will be evaluated using probabilistic metrics, comparing the submitted forecasts to actual reported RVDSS surveillance data.
 
