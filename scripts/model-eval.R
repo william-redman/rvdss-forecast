@@ -89,8 +89,8 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
 # Main Loop for Forecast Calculation
 for (reference_date in all_ref_dates) {
   reference_date <- as_date(reference_date)
-  for (model in model_names) { #rvdss/
-    filename <- paste0("model-output/", model, "/", reference_date, "-", model, ".csv")
+  for (model in model_names) { 
+    filename <- paste0("rvdss/model-output/", model, "/", reference_date, "-", model, ".csv")
     cat("Processing file:", filename, "\n")
     
     if (!file.exists(filename)) {
