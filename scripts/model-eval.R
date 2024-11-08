@@ -36,8 +36,8 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
   quantiles_vector <- c(0.025, 0.1, 0.25)
   
   single_true <- df_hhs %>%
-    filter(time == as_date(forecast_date), geo_value == region) %>%
-    pull(tid)
+    filter(date == as_date(forecast_date), geo_value == region) %>%
+    pull(tid)  # Replace 'sarscov2_pct_positive' if needed for COVID data
   
   if (length(single_true) == 0) {
     cat("No true value for region:", region, "on date:", forecast_date, "\n")
@@ -85,6 +85,7 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
     horizon = j
   )
 }
+
 
 # Main Loop for Forecast Calculation
 for (reference_date in all_ref_dates) {
