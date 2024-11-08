@@ -37,7 +37,7 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
   
   single_true <- df_hhs %>%
     filter(time == as_date(forecast_date), geo_value == region) %>%
-    pull(covid)
+    pull(tid)
   
   if (length(single_true) == 0) {
     cat("No true value for region:", region, "on date:", forecast_date, "\n")
