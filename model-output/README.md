@@ -125,17 +125,17 @@ Values in the `value` column are non-negative numbers indicating the "quantile" 
 
 ### Example tables
 
-**Table 1:** This table represents a forecast for the week ending on 2024-10-12 for flu hospitalizations in the Central region. The forecast includes quantile predictions ranging from the 2.5th to the 97.5th percentiles. The horizon of -1 indicates this is a hindcast for the previous week relative to the reference_date of 2024-10-19.
+**Table 1:** This table represents a forecast for the week ending on 2024-10-12 for percentage positive flu lab detections in the Ontario province. The forecast includes quantile predictions ranging from the 2.5th to the 97.5th percentiles. The horizon of -1 indicates this is a hindcast for the previous week relative to the reference_date of 2024-10-19.
 
-| reference_date | target          | horizon | location | target_end_date | output_type | output_type_id | value |
-|----------------|-----------------|---------|----------|-----------------|-------------|----------------|-------|
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.025          | 30    |
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.1            | 32    |
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.25           | 33    |
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.5            | 35    |
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.75           | 37    |
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.9            | 38    |
-| 2024-10-19     | wk inc flu hosp | -1      | Central  | 2024-10-12      | quantile    | 0.975          | 40    |
+| reference_date | target             | horizon | location | target_end_date | output_type | output_type_id | value |
+|----------------|--------------------|---------|----------|-----------------|-------------|----------------|-------|
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.025          | 3.0   |
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.1            | 3.2   |
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.25           | 3.3   |
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.5            | 3.5   |
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.75           | 3.7   |
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.9            | 3.8   |
+| 2024-10-19     | pct wk flu lab det | -1      | on       | 2024-10-12      | quantile    | 0.975          | 4.0   |
 
 
 
