@@ -5,11 +5,11 @@ library(MMWRweek)
 
 # Load and process dataset
 cat("Loading hospitalization data...\n") #rvdss/
-df_hhs <- read_csv('rvdss/target-data/season_2024_2025/data_report.csv') %>%
+df_hhs <- read_csv('rvdss/target-data/season_2024_2025/target_rvdss_data.csv') %>%
   mutate(date = as_date(time_value, format = "%d-%m-%Y"),
          mmwr_week = MMWRweek(time_value)$MMWRweek) %>%
   arrange(time_value)
-write_csv(df_hhs, "rvdss-output/data_report.csv")
+write_csv(df_hhs, "rvdss-output/target_rvdss_data.csv")
 
 print(head(df_hhs))  # Check first few rows to ensure data is loaded correctly
 
