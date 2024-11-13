@@ -44,12 +44,10 @@ The `rvdss_update.py` code processes and updates weekly data on respiratory viru
 
 Two main functions then retrieve and transform the data. `get_revised_data()` accesses historical weekly data, reformats it with a multi-index structure and ensures date consistency. `get_weekly_data()` retrieves data for the latest epidemiological week, determining the correct year and week from a summary file. It then applies the same formatting and standardization as with the historical data.
 
-After processing, the code saves the data in `positive_tests.csv` and `respiratory_detections.csv` files. If these files already exist, it checks for new entries by comparing indices, appending updated data to prevent duplication. After saving updates to `positive_tests.csv` and `respiratory_detections.csv`, the code consolidates both datasets into a unified file, `raw.csv`. The file `raw.csv` includes updated `geo_type` values and removes duplicates, keeping only the latest (**revised**) entry for each combination of `time_value`, `geo_type`, and `geo_value`. 
-
-Finally, the code refines `raw.csv` into `data_report.csv` by selecting target columns (`COLUMNS_TARGET`) and rounding percentage values to three decimal places, creating a ready-to-analyze file with standardized weekly data across Canada.
+After processing, the code saves the data in `positive_tests.csv` and `respiratory_detections.csv` files. If these files already exist, it checks for new entries by comparing indices, appending updated data to prevent duplication. After saving updates to `positive_tests.csv` and `respiratory_detections.csv`, the code consolidates both datasets into a unified file, `target_rvdss_data.csv`. It includes updated `geo_type` values and removes duplicates, keeping only the latest (**revised**) entry for each combination of `time_value`, `geo_type`, and `geo_value`. It retains our target columns (`COLUMNS_TARGET`) and rounds percentage values to two decimal places, creating a ready-to-analyze file with standardized weekly data across Canada.
 
 ### Source Field
-For each season, the code generates three intermediary files:
+For each season, the code generates three files:
 
 - **positive_tests.csv**
   - Displays the percentage of positive tests for each virus by week.
@@ -63,7 +61,7 @@ For each season, the code generates three intermediary files:
   - Includes revisions for each update.
   - Matches **Figures 3-9** in the reports, typically titled [“Positive [virus] tests (%)...”](<https://www.canada.ca/en/public-health/services/surveillance/respiratory-virus-detections-canada/2021-2022/week-28-ending-july-16-2022.html#a5>)
 
-- **raw.csv**
+- **target_rvdss_data.csv**
   - Consolidates data from `positive_tests.csv` and `respiratory_detections.csv`.
   - Updates the `geo_type` field based on location corrections (from `LOC_CORRECTION`).
   - Removes duplicate rows, keeping only the latest (revised) entry for each combination of `time_value`, `geo_type`, and `geo_value`.
@@ -71,5 +69,6 @@ For each season, the code generates three intermediary files:
 
 
 ## Additional Resources
-
+* [Data Source](https://health-infobase.canada.ca/respiratory-virus-detections/understanding.html#source)
+* [Technical Notes](https://health-infobase.canada.ca/respiratory-virus-detections/understanding.html#notes)
 ---
