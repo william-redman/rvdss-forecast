@@ -36,7 +36,7 @@ Previously collected data from earlier seasons are included in the `.auxiliary-d
 
 ### CSV Files
 A set of CSV files is updated weekly with the latest observed values for [target type, e.g., percentage of positive virus detections]. These are available at:
-- `./target-data/season_2024_2025/data_report.csv`
+- `./target-data/season_2024_2025/target_rvdss_data.csv`
 - `auxiliary-data/season_2024_2025_raw_files` (Raw Files)
 
 ## Data Processing
