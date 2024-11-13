@@ -1001,8 +1001,8 @@ def get_season_reports(url):
     if not os.path.exists(path):
         os.makedirs(path)
 
-    #all_respiratory_detection_table.to_csv(path_aux+"/" + RESP_COUNTS_OUTPUT_FILE, index=True)
-    #all_positive_tables.to_csv(path_aux+"/" + POSITIVE_TESTS_OUTPUT_FILE, index=True)
+    all_respiratory_detection_table.to_csv(path_aux+"/" + RESP_COUNTS_OUTPUT_FILE, index=True)
+    all_positive_tables.to_csv(path_aux+"/" + POSITIVE_TESTS_OUTPUT_FILE, index=True)
 
 	# Merge repiratory_detection and positive_test files
     concatenated_table = pd.concat([all_respiratory_detection_table, all_positive_tables], axis=0)
@@ -1019,16 +1019,16 @@ def get_season_reports(url):
     concatenated_table = concatenated_table.drop(columns=['epiweek'], errors='ignore')
 
     #concatenated_table = concatenated_table.drop(columns=[col for col in concatenated_table.columns if 'pct_positive' in col])
-    concatenated_table.to_csv(path+"/" + 'raw.csv', index=False)
+    #concatenated_table.to_csv(path+"/" + 'raw.csv', index=False)
     
     for col in concatenated_table.columns:   
         if col not in COLUMNS_TARGET:
             concatenated_table = concatenated_table.drop(columns=[col])
         elif 'pct_positive' in col:
-            # Round percentage columns to 3 decimal places
-            concatenated_table[col] = concatenated_table[col].round(3)
+            # Round percentage columns to 2 decimal places
+            concatenated_table[col] = concatenated_table[col].round(2)
 
-    concatenated_table.to_csv(path+"/" + 'data_report.csv', index=False)
+    concatenated_table.to_csv(path+"/" + 'target_rvdss_data.csv', index=False)
 
     HISTORIC_SEASON_URL_CHECKPOINT.append(url)
 
@@ -1042,7 +1042,7 @@ def main():
                 warnings.simplefilter("ignore", category=FutureWarning)
                 warnings.simplefilter("ignore", category=DeprecationWarning)
                 # Check if previous seasons' lab data exists
-                if os.path.exists('./auxiliary-data/target-data-archive/season_2023_2024/data_report.csv')==False:
+                if os.path.exists('./auxiliary-data/target-data-archive/season_2023_2024/target_rvdss_data.csv')==False:
                     [get_season_reports(url) for url in HISTORIC_SEASON_URL if url not in HISTORIC_SEASON_URL_CHECKPOINT]
             break
         except requests.exceptions.RequestException as e:
@@ -1174,16 +1174,16 @@ def main():
     concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore')
     concatenated_table = concatenated_table.drop(columns=['epiweek','week','date','weekorder'], errors='ignore')
     
-    concatenated_table.to_csv('./auxiliary-data/season_2024_2025_raw_files/raw.csv', index=False)
+    #concatenated_table.to_csv('./auxiliary-data/season_2024_2025_raw_files/raw.csv', index=False)
     
     for col in concatenated_table.columns:   
         if col not in COLUMNS_TARGET:
             concatenated_table = concatenated_table.drop(columns=[col])
         elif 'pct_positive' in col:
-            # Round percentage columns to 3 decimal places
-            concatenated_table[col] = concatenated_table[col].round(3)
+            # Round percentage columns to 2 decimal places
+            concatenated_table[col] = concatenated_table[col].round(2)
 		
-    concatenated_table.to_csv('./target-data/season_2024_2025/data_report.csv', index=False)
+    concatenated_table.to_csv('./target-data/season_2024_2025/target_rvdss_data.csv', index=False)
    
 if __name__ == '__main__':
     main()
