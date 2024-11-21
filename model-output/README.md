@@ -22,7 +22,7 @@ Forecasts are quantitative predictions about data to be observed in the future. 
 
 ## Target Data
 
-This project focuses on percentage of positive lab detection tests data for COVID-19, influenza, and RSV, as reported in the [Respiratory Virus Detection Surveillance System](https://www.canada.ca/en/public-health/services/surveillance/respiratory-virus-detections-canada.html). This data serves as the target ("gold standard") for forecasts. Further details can be found in the [target-data folder README](../target-data/README.md).
+This project focuses on percentage of positive lab detection tests data for COVID-19, influenza, and RSV, as reported in the [Respiratory Virus Detection Surveillance System](https://www.canada.ca/en/public-health/services/surveillance/respiratory-virus-detections-canada.html). This data serves as the target ("gold standard") for forecasts. Further details can be found in the [target-data folder README](target-data/season_2024_2025/README.md).
 
 ## Data Formatting
 
