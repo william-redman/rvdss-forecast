@@ -22,7 +22,7 @@ These predictions will be evaluated against confirmed RVDSS surveillance data re
 ### Key Dates
 * **Challenge Start Date**: November 25, 2024
 * **Challenge End Date**: May 31, 2025
-* **Weekly Submission Deadline**: Thursdays at 11 PM Eastern Time (referred to as the "Forecast Due Date"). Submissions should cover the reference week ending on the Saturday following the Forecast Due Date.
+* **Weekly Submission Deadline**: Saturdays at 11 PM Eastern Time (referred to as the "Forecast Due Date"). Submissions should cover the reference week ending on the Saturday following the Forecast Due Date.
 
 The reference week corresponds to the epidemiological week (EW) running from Sunday to Saturday. Teams are expected to submit forecasts for the end of the reference week and the following three weeks. While teams are encouraged to forecast for all targets and time horizons, it is not required to submit predictions for every time period or virus. Forecasts for the previous week’s virus detections (horizon -1) are optional and will not be included in the primary scoring but may be helpful for calibration.
 
