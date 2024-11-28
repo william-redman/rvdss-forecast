@@ -1,6 +1,6 @@
 team_name: "University of British Columbia Statistics"
 team_abbr: "UBCStat"
-model_name: "Climitalogical Forecaster"
+model_name: "Climatological Forecaster"
 model_abbr: "Climate"
 model_version: "1.0"
 model_contributors: [
