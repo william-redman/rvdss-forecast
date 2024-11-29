@@ -22,7 +22,7 @@ Forecasts are quantitative predictions about data to be observed in the future. 
 
 ## Target Data
 
-This project focuses on percentage of positive lab detection tests data for COVID-19, influenza, and RSV, as reported in the [Respiratory Virus Detection Surveillance System](https://www.canada.ca/en/public-health/services/surveillance/respiratory-virus-detections-canada.html). This data serves as the target ("gold standard") for forecasts. Further details can be found in the [target-data folder README](../target-data/README.md).
+This project focuses on percentage of positive lab detection tests data for COVID-19, influenza, and RSV, as reported in the [Respiratory Virus Detection Surveillance System](https://www.canada.ca/en/public-health/services/surveillance/respiratory-virus-detections-canada.html). This data serves as the target ("gold standard") for forecasts. Further details can be found in the [target-data folder README](../target-data/season_2024_2025/README.md).
 
 ## Data Formatting
 
@@ -217,7 +217,7 @@ The validation checks produced some failures/errors reported above.
 
 ## Policy on late or updated submissions 
 
-In order to ensure that forecasting is done in real-time, all forecasts are required to be submitted to this repository by 11PM ET on Thursdays each week. We do not accept late forecasts.
+In order to ensure that forecasting is done in real-time, all forecasts are required to be submitted to this repository by 11PM America/Toronto on Saturdays each week. We do not accept late forecasts.
 
 ## Evaluation criteria
 Forecasts will be evaluated using `Weighted Interval Score (WIS)`, `Absolute Error (AE)` and `Mean Squared Error (MSE)`. The CMU [Delphi group's Forecast Evaluation Dashboard](https://delphi.cmu.edu/forecast-eval/) and the COVID-19 Forecast Hub periodic [Forecast Evaluation Reports](https://covid19forecasthub.org/eval-reports/) provide examples of evaluations using these criteria.
