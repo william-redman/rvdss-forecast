@@ -1,7 +1,7 @@
 team_name: "University of British Columbia Statistics"
 team_abbr: "UBCStat"
 model_name: "Climatological-ARX Ensemble"
-model_abbr: "Climate_ARX_Ensemble"
+model_abbr: "ARX_Ensemble"
 model_version: "1.0"
 model_contributors: [
   {
