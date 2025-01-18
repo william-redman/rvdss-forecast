@@ -19,6 +19,6 @@ license: "CC-BY-4.0"
 designated_model: true
 methods: "Ensemble of climatalogical forecaster and ARX model with forecasted climate medians"
 data_inputs: "Respiratory Reports of Influenza, RSV and COVID-19 Detections"
-methods_long: "Ensemble of climitalogical forecasts and AR(3) model that uses target values and forecasted medians from climitalogical forecasts"
+methods_long: "Ensemble of climitalogical forecasts and ARX model that uses target values and forecasted medians from climitalogical forecasts"
 ensemble_of_models: True
 ensemble_of_hub_models: False
