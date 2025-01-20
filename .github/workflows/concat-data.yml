@@ -44,4 +44,4 @@ jobs:
         env:
           GITHUB_PAT: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
         run: |
-          git push https://${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/ai4castinghub/hospitalization-forecast.git HEAD:main || echo "No changes to commit"
+          git push https://${{ secrets.PERSONAL_GITHUB_TOKEN }}@github.com/ai4castinghub/rvdss-forecast.git HEAD:main || echo "No changes to commit"
