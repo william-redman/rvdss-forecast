@@ -34,7 +34,7 @@ create_file_path <- function(base_dir, file_name) {
 }
 
 # Read and preprocess the data
-data <- read.csv('auxiliary-data/concatenated_hospitalization_data.csv') |>
+data <- read.csv('auxiliary-data/concatenated_rvdss_data.csv') |>
   mutate(time_value = as.Date(time)) |>
   select(-time, -geo_type, -Season)
 
