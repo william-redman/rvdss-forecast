@@ -35,7 +35,7 @@ create_file_path <- function(base_dir, file_name) {
 
 # Read and preprocess the data
 data <- read.csv('auxiliary-data/concatenated_rvdss_data.csv') |>
-  mutate(time_value = as.Date(time)) |>
+  mutate(time_value = as.Date(time_value)) |>
   select(-time, -geo_type, -Season)
 
 # Process predictions for all diseases
