@@ -8,6 +8,7 @@ model_data = pd.read_csv('auxiliary-data/concatenated_model_output.csv')
 
 # Load the truth data
 truth_data = pd.read_csv('target-data/season_2024_2025/target_rvdss_data.csv')
+truth_data.rename(columns={"time_value": "time"}, inplace=True)
 truth_data['time'] = pd.to_datetime(truth_data['time'])
 
 # Ensure model data types are correct
