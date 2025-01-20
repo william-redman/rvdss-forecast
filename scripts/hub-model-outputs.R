@@ -8,6 +8,12 @@ library(lubridate)
 # Function to process predictions for a given disease
 process_disease <- function(disease, data) {
   tryCatch({
+    target_simplified <- c(
+      "sarscov2_pct_positive" = "covid",
+      "flu_pct_positive" = "flu",
+      "rsv_pct_positive" = "rsv"
+    )
+    
     disease_data <- data[, c("geo_value", "time_value", disease)] |>
       drop_na() |>
       as_epi_df(
@@ -16,10 +22,11 @@ process_disease <- function(disease, data) {
       )
     
     cdc <- cdc_baseline_forecaster(disease_data, outcome = disease)
+    print(cdc)
     
     preds <- pivot_quantiles_wider(cdc$predictions, .pred_distn) |>
       select(geo_value, ahead, forecast_date, target_date, matches("^0\\.\\d{3}$")) |>
-      mutate(disease = paste("pct wk", disease, "lab det"))
+      mutate(disease = paste("pct wk", target_simplified[disease], "lab det"))
     
     return(preds)
   }, error = function(e) {
@@ -39,7 +46,7 @@ data <- read.csv('auxiliary-data/concatenated_rvdss_data.csv') |>
   select(-geo_type, -Season)
 
 # Process predictions for all diseases
-all_preds <- bind_rows(lapply(c('covid', 'rsv', 'flu'), process_disease, data = data))
+all_preds <- bind_rows(lapply(c('sarscov2_pct_positive', 'rsv_pct_positive', 'flu_pct_positive'), process_disease, data = data))
 
 # Reshape predictions and apply rounding logic
 all_preds <- all_preds |>
@@ -57,6 +64,8 @@ all_preds <- all_preds |>
       #TRUE ~ round(value)
     #)
   )
+
+print(all_preds)
 
 # Rename columns and add 'output_type'
 all_preds <- all_preds %>%
