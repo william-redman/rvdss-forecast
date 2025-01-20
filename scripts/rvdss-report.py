@@ -2,20 +2,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 from datetime import datetime, timedelta
+import warnings
+warnings.filterwarnings("ignore")
+
 
 # Load the model data
 model_data = pd.read_csv('auxiliary-data/concatenated_model_output.csv')
 
 # Load the truth data
 truth_data = pd.read_csv('target-data/season_2024_2025/target_rvdss_data.csv')
-truth_data.rename(columns={"time_value": "time"}, inplace=True)
-truth_data['time'] = pd.to_datetime(truth_data['time'])
+truth_data = truth_data.rename(columns={"time_value": "time"})
+truth_data['time'] = pd.to_datetime(truth_data['time']).dt.date
 
 # Ensure model data types are correct
 model_data['reference_date'] = pd.to_datetime(model_data['reference_date']).dt.date
-model_data['target_end_date'] = pd.to_datetime(model_data['target_end_date'])
+model_data['target_end_date'] = pd.to_datetime(model_data['target_end_date']).dt.date
 model_data['output_type_id'] = pd.to_numeric(model_data['output_type_id'], errors='coerce')
 
+print(model_data)
+print(truth_data)
 # Calculate reference date
 current_date = datetime.now().date()
 ref_date = current_date + timedelta(days=(6 - current_date.weekday())) - timedelta(days=1, weeks=1)
@@ -78,7 +83,7 @@ with PdfPages(file_name) as pdf:
 
             # Left Plot: All Models (excluding ensemble)
             ax = axes[0]
-            ax.set_ylim([0, ref_yaxis['value'].max() * 1.9])
+            ax.set_ylim([ref_yaxis['value'].min()/2, ref_yaxis['value'].max() * 2])
             non_ensemble_data = region_data[region_data['model'] != 'AI4Casting_Hub-Ensemble_v1']
             for model in non_ensemble_data['model'].unique():
                 model_specific_data = non_ensemble_data[non_ensemble_data['model'] == model]
@@ -121,6 +126,8 @@ with PdfPages(file_name) as pdf:
             
             # Add truth data to the left plot
             region_truth = truth_data[truth_data['geo_value'] == region]
+            region_truth = region_truth.sort_values(by='time')
+
             if not region_truth.empty and truth_column in region_truth.columns:
                 ax.plot(
                     region_truth['time'],
@@ -133,7 +140,8 @@ with PdfPages(file_name) as pdf:
             else:
                 print(f"No truth data for region: {region}")
 
-            ax.set_title(f"Forecasting Models - {region} - {target}")
+            full_region_name = locations[locations['geo_abbr']==region]['geo_name'].values[0]
+            ax.set_title(f"Forecasting Models - {full_region_name} - {target}")
             ax.set_xlabel("Target End Date")
             ax.set_ylabel("Forecast Value")
             ax.legend(loc="upper left", fontsize="small")
@@ -182,7 +190,7 @@ with PdfPages(file_name) as pdf:
                 )
             else:
                 print(f"No truth data for region: {region}")
-            full_region_name = locations[locations['geo_abbr']==region]['geo_name']
+
             ax.set_title(f"Ensemble Model - {full_region_name} - {target}")
             ax.set_xlabel("Target End Date")
             ax.legend(loc="upper left", fontsize="small")
