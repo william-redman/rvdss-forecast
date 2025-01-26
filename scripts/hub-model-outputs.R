@@ -25,7 +25,8 @@ process_disease <- function(disease, data) {
     print(cdc)
     
     preds <- pivot_quantiles_wider(cdc$predictions, .pred_distn) |>
-      select(geo_value, ahead, forecast_date, target_date, matches("^0\\.\\d{3}$")) |>
+      select(geo_value, ahead, forecast_date, target_date, `0.025`, `0.1`, `0.25`, `0.5`, `0.75`, `0.9`, `0.975`)
+      #select(geo_value, ahead, forecast_date, target_date, matches("^0\\.\\d{3}$")) |>
       mutate(disease = paste("pct wk", target_simplified[disease], "lab det"))
     
     return(preds)
