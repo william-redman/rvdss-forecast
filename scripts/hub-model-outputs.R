@@ -22,12 +22,10 @@ process_disease <- function(disease, data) {
       )
     
     cdc <- cdc_baseline_forecaster(disease_data, outcome = disease)
-
+    print(cdc)
+    
     preds <- pivot_quantiles_wider(cdc$predictions, .pred_distn) |>
-      select(geo_value, ahead, forecast_date, target_date, disease, `0.025`, `0.1`, `0.25`, `0.5`, `0.75`, `0.9`, `0.975`) #elect(geo_value, ahead, forecast_date, target_date, `0.5`,matches("^0\\.\\d{3}$")) |>      
-
-    print(names(preds))
-    preds <- preds |>
+      select(geo_value, ahead, forecast_date, target_date, matches("^0\\.\\d{3}$")) |>
       mutate(disease = paste("pct wk", target_simplified[disease], "lab det"))
     
     return(preds)
@@ -59,7 +57,8 @@ all_preds <- all_preds |>
   ) |>
   mutate(
     forecast_date = forecast_date + 7,
-    ahead = ahead - 1
+    ahead = ahead - 1,
+    value = value 
   )
 
 print(all_preds)
@@ -73,9 +72,7 @@ all_preds <- all_preds %>%
     location = geo_value,
     target = disease
   ) %>%
-  mutate(output_type = "quantile",             # Add a new column with value 'quantile' for every row
-    value = ceiling(value * 100) / 100
-  ) |>
+  mutate(output_type = "quantile") |>
   filter(horizon != 4)
 
 # Save predictions
