@@ -58,11 +58,7 @@ all_preds <- all_preds |>
   mutate(
     forecast_date = forecast_date + 7,
     ahead = ahead - 1,
-    value = value #case_when(
-      #output_type_id < "0.5" ~ floor(value),
-      #output_type_id > "0.5" ~ ceiling(value),
-      #TRUE ~ round(value)
-    #)
+    value = value 
   )
 
 print(all_preds)
