@@ -57,12 +57,7 @@ all_preds <- all_preds |>
   ) |>
   mutate(
     forecast_date = forecast_date + 7,
-    ahead = ahead - 1,
-    value = value #case_when(
-      #output_type_id < "0.5" ~ floor(value),
-      #output_type_id > "0.5" ~ ceiling(value),
-      #TRUE ~ round(value)
-    #)
+    ahead = ahead - 1
   )
 
 print(all_preds)
@@ -76,7 +71,9 @@ all_preds <- all_preds %>%
     location = geo_value,
     target = disease
   ) %>%
-  mutate(output_type = "quantile") |>
+  mutate(output_type = "quantile",             # Add a new column with value 'quantile' for every row
+    value = ceiling(value * 100) / 100
+  ) |>
   filter(horizon != 4)
 
 # Save predictions
