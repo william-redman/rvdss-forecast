@@ -40,7 +40,7 @@ methods_long: ' LLM Prompt:
     - Each forecasted week corresponds to subsequent Saturdays.  
 
   2. Reference & Target Dates:  
-    - Reference Date → The last available data point + 7 days.  
+    - Reference Date → The last available data point + 7 days in concatenated-rvdss-data.csv.
       (E.g., If the latest data is from 2024-11-23, then the reference date = 2024-11-30.)  
     - Target End Dates → Saturdays for each horizon (0–3 weeks ahead).  
 
@@ -60,7 +60,7 @@ methods_long: ' LLM Prompt:
     2025-02-08 | pct wk rsv lab det | 1 | 2025-02-15 | Ontario | quantile | 0.025 | 1  
 
   Column Descriptions:  
-  - reference_date → The forecast generation date (last available data + 7 days).  
+  - reference_date →  The forecast generation date, which is the last available data in concatenated-rvdss-data.csv + 7 days.
   - target → The type of target:  
     - "pct wk covid lab det" → Percentage Weekly Covid Positive Lab Detections.  
     - "pct wk flu lab det" → Percentage Weekly Influenza Positive Lab Detections.  
