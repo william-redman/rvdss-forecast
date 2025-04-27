@@ -162,7 +162,7 @@ if (length(WIS_all) == 0 || is.null(WIS_all) || nrow(WIS_all) == 0) {
 
   for (model_name in model_names) {
     for (h in 0:3) {
-      WIS_horizon <- WIS_all %>% filter(model == model_name, target_end_date == (as_date(reference_date) + (h * 7)))
+      #WIS_horizon <- WIS_all %>% filter(model == model_name, target_end_date == (as_date(reference_date) + (h * 7)))
       WIS_average$Average_WIS[WIS_average$Model == model_name & WIS_average$Horizon == h] <- mean(WIS_horizon$WIS, na.rm = TRUE)
       WIS_average$Average_MAE[WIS_average$Model == model_name & WIS_average$Horizon == h] <- mean(WIS_horizon$AE, na.rm = TRUE)
       WIS_average$Average_MSE[WIS_average$Model == model_name & WIS_average$Horizon == h] <- mean(WIS_horizon$MSE, na.rm = TRUE)
@@ -170,8 +170,11 @@ if (length(WIS_all) == 0 || is.null(WIS_all) || nrow(WIS_all) == 0) {
   }
   
   # Write results to CSV
+  WIS_all = WIS_all |>
+    mutate(values = ifelse(values < 0, NA, round(values, 3)))
+  
   write_csv(WIS_average, "rvdss-output/WIS_average.csv")
-  write_csv(WIS_all, "rvdss-output/all_scores.csv")
+  write_csv(WIS_all, "rvdss-output/all_rvdss_scores.csv")
 }
 
 # Aggregate model output with additional checks
