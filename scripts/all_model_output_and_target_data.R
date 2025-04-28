@@ -91,7 +91,7 @@ all_model_data <- bind_rows(
 )
 
 all_model_data <- all_model_data %>%
-  mutate(values = ifelse(values < 0, 0, round(values, 2)))
+  mutate(value = ifelse(value < 0, 0, round(value, 2)))
 
 # Save the combined data to a CSV file
 write_csv(all_model_data, "auxiliary-data/concatenated_model_output.csv")
