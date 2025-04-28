@@ -171,7 +171,9 @@ if (length(WIS_all) == 0 || is.null(WIS_all) || nrow(WIS_all) == 0) {
   
   # Write results to CSV
   WIS_all = WIS_all |>
-    mutate(values = ifelse(values < 0, NA, round(values, 3)))
+    mutate(WIS = ifelse(WIS < 0, NA, round(WIS, 3)),
+           AE = ifelse(AE < 0, NA, round(AE, 3)),
+           MSE = ifelse(MSE < 0, NA, round(MSE, 3)))
   
   write_csv(WIS_average, "rvdss-output/WIS_average.csv")
   write_csv(WIS_all, "rvdss-output/all_rvdss_scores.csv")
