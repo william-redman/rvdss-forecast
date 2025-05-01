@@ -163,8 +163,7 @@ if (length(WIS_all) == 0 || is.null(WIS_all) || nrow(WIS_all) == 0) {
   # Removing just the 2024-12-28 date from evaluations
 
   WIS_all <- WIS_all |>
-    mutate(date = as_date(date)) |>
-    filter(!date %in% as_date(c('2024-12-28')))
+    filter(!date %in% c('2024-12-28'))
   
 
   for (model_name in model_names) {
