@@ -95,7 +95,12 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
 
 # Main Loop for Forecast Calculation
 for (reference_date in all_ref_dates) {
-  reference_date <- as_date(reference_date)
+  # Removing just the 2024-12-28 date from evaluations
+  
+  if (reference_date == as_date('2024-12-28')) {
+    next 
+  }
+  
   for (model in model_names) { 
     filename <- paste0("rvdss/model-output/", model, "/", reference_date, "-", model, ".csv")
     cat("Processing file:", filename, "\n")
@@ -159,12 +164,7 @@ if (length(WIS_all) == 0 || is.null(WIS_all) || nrow(WIS_all) == 0) {
   cat("Calculating WIS averages...\n")
   WIS_average <- expand.grid(Horizon = 0:3, Model = model_names) %>%
     mutate(Average_WIS = NA, Average_MAE = NA, Average_MSE = NA)
-  
-  # Removing just the 2024-12-28 date from evaluations
 
-  WIS_all <- WIS_all |>
-    filter(!date %in% c('2024-12-28'))
-  
 
   for (model_name in model_names) {
     for (h in 0:3) {
