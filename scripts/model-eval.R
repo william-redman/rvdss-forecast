@@ -4,7 +4,7 @@ library(readr)
 library(MMWRweek)
 
 # Load and process dataset
-cat("Loading hospitalization data...\n") #rvdss/
+cat("Loading rvdss data...\n") #rvdss/
 df_hhs <- read_csv('rvdss/target-data/season_2024_2025/target_rvdss_data.csv') %>%
   mutate(date = as_date(time_value, format = "%d-%m-%Y"),
          mmwr_week = MMWRweek(time_value)$MMWRweek) %>%
@@ -95,6 +95,7 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
 
 # Main Loop for Forecast Calculation
 for (reference_date in all_ref_dates) {
+  reference_date <- as_date(reference_date)
   # Removing just the 2024-12-28 date from evaluations
   
   if (reference_date == as_date('2024-12-28')) {
