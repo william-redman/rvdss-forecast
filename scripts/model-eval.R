@@ -4,13 +4,13 @@ library(readr)
 library(MMWRweek)
 
 # Load and process dataset
-cat("Loading hospitalization data...\n") #rvdss/
+cat("Loading rvdss data...\n") #rvdss/
 df_hhs <- read_csv('rvdss/target-data/season_2024_2025/target_rvdss_data.csv') %>%
   mutate(date = as_date(time_value, format = "%d-%m-%Y"),
          mmwr_week = MMWRweek(time_value)$MMWRweek) %>%
   arrange(time_value)
-write_csv(df_hhs, "rvdss-output/target_rvdss_data.csv")
 
+write_csv(df_hhs, "rvdss-output/target_rvdss_data.csv")
 print(head(df_hhs))  # Check first few rows to ensure data is loaded correctly
 
 # Define parameters #rvdss/
@@ -28,9 +28,9 @@ region_vector <- c("ca","atlantic","qc", "on","prairies",
 
 target_vector <- c('pct wk flu lab det','pct wk covid lab det','pct wk rsv lab det')
 
-target_simplified <- c('pct wk flu lab det' = "sarscov2_pct_positive",
-                       'pct wk covid lab det' = "rsv_pct_positive",
-                       'pct wk rsv lab det' = "flu_pct_positive")
+target_simplified <- c('pct wk flu lab det' = "flu_pct_positive",
+                       'pct wk covid lab det' = "sarscov2_pct_positive",
+                       'pct wk rsv lab det' = "rsv_pct_positive")
 
 # Initialize results container
 WIS_all <- list()
@@ -95,6 +95,7 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
 
 # Main Loop for Forecast Calculation
 for (reference_date in all_ref_dates) {
+  reference_date <- as_date(reference_date)
   # Removing just the 2024-12-28 date from evaluations
   
   if (reference_date == as_date('2024-12-28')) {
