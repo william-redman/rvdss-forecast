@@ -117,19 +117,12 @@ for (reference_date in all_ref_dates) {
     }
     
     for (region in region_vector) {
-      filtered_forecast <- forecast %>%
-        filter(location == region)
-      
-      if (nrow(filtered_forecast) == 0) {
-        cat("No data for region:", region,"\n")
-        next
-      }
       for (tid in target_vector) {
         filtered_forecast <- forecast %>%
-          filter(target == tid)
+          filter(location == region, target == tid)
         
         if (nrow(filtered_forecast) == 0) {
-          cat("No data for target:", tid, "\n")
+          cat("No data for region:", region, "and target:", tid, "\n")
           next
         }
         
