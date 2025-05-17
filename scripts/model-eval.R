@@ -16,7 +16,7 @@ print(head(df_hhs))  # Check first few rows to ensure data is loaded correctly
 # Define parameters #rvdss/
 model_output_dir <- "rvdss/model-output"
 model_names <- list.dirs(model_output_dir, full.names = FALSE, recursive = FALSE)
-print(model_names)  # Print model directories to verify
+print(model_names) 
 
 current_reference_date <- floor_date(Sys.Date(), unit = "week") + days(6)
 start_reference_date <- as_date("2024-10-19")
@@ -93,11 +93,10 @@ WIS <- function(single_forecast, model, date, forecast_date, region, tid, j) {
 }
 
 
-# Main Loop for Forecast Calculation
+
 for (reference_date in all_ref_dates) {
   reference_date <- as_date(reference_date)
   # Removing just the 2024-12-28 date from evaluations
-  
   if (reference_date == as_date('2024-12-28')) {
     next 
   }
@@ -157,6 +156,7 @@ for (reference_date in all_ref_dates) {
     }
   }
 }
+
 
 # Check if WIS_all has any data before proceeding
 if (length(WIS_all) == 0 || is.null(WIS_all) || nrow(WIS_all) == 0) {
