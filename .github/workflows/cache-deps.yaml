@@ -2,7 +2,6 @@ name: Build dependency cache on main branch
 
 on:
   workflow_dispatch:
-  
   push:
     branches: [main]
     paths:
@@ -32,6 +31,9 @@ jobs:
       - name: Update APT cache
         run: sudo apt-get update
 
+      - name: Ensure pak cache directory exists
+        run: mkdir -p ~/.local/share/pak
+
       - name: Restore R package cache
         uses: actions/cache@v3
         with:
@@ -47,7 +49,6 @@ jobs:
           packages: |
             any::hubValidations
             any::sessioninfo
-
 
       - name: Verify package installation
         run: |
