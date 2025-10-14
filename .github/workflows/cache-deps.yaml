@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-deps-cache-on-main:
-    if: ${{ github.repository_owner == 'ai4castinghub-admin' }}
+    if: ${{ github.repository_owner == 'ai4castinghub' }}
     runs-on: ubuntu-22.04
 
     env:
