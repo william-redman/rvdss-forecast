@@ -1,5 +1,5 @@
 {
-    "schema_version": "https://raw.githubusercontent.com/Infectious-Disease-Modeling-Hubs/schemas/main/v3.0.1/tasks-schema.json",
+    "schema_version": "https://raw.githubusercontent.com/hubverse-org/schemas/main/v5.0.0/tasks-schema.json",
     "rounds": [
         {
             "round_id_from_variable": true,
@@ -70,9 +70,9 @@
                     "output_type": {
                         "quantile": {
                             "output_type_id": {
-                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975], //percentage quantiles
-                                "optional": null
+                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975]
                             },
+                            "is_required": true,
                             "value": {
                                 "type": "double",
                                 "minimum": 0
@@ -85,9 +85,7 @@
                             "target_name": "percentage of weekly influenza lab detections",
                             "target_units": "percentage",
                             "target_keys": {
-                                "target": [
-                                    "pct wk flu lab det"
-                                ]
+                                "target": "pct wk flu lab det"
                             },
                             "target_type": "continuous",
                             "description": "This target represents the percentage of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
@@ -161,9 +159,9 @@
                     "output_type": {
                         "quantile": {
                             "output_type_id": {
-                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975], //percentage quantiles
-                                "optional": null
+                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975]
                             },
+                            "is_required": true,
                             "value": {
                                 "type": "double",
                                 "minimum": 0
@@ -176,9 +174,7 @@
                             "target_name": "percentage of weekly covid lab detections",
                             "target_units": "percentage",
                             "target_keys": {
-                                "target": [
-                                    "pct wk covid lab det"
-                                ]
+                                "target":"pct wk covid lab det"
                             },
                             "target_type": "continuous",
                             "description": "This target represents the percentage of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
@@ -252,9 +248,9 @@
                     "output_type": {
                         "quantile": {
                             "output_type_id": {
-                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975], //percentage quantiles
-                                "optional": null
+                                "required": [0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975]
                             },
+                            "is_required": true,
                             "value": {
                                 "type": "double",
                                 "minimum": 0
@@ -267,9 +263,7 @@
                             "target_name": "percentage of weekly rsv lab detections",
                             "target_units": "percentage",
                             "target_keys": {
-                                "target": [
-                                    "pct wk rsv lab det"
-                                ]
+                                "target": "pct wk rsv lab det"
                             },
                             "target_type": "continuous",
                             "description": "This target represents the percentage of new detections in the week ending on the date [horizon] weeks after the reference_date, on the target_end_date.",
