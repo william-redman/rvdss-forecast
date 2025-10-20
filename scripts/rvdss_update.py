@@ -8,6 +8,7 @@ from epiweeks import Week
 from datetime import datetime, timedelta
 import math
 import warnings
+from dateutil import parser
 
 VIRUSES = {
     "parainfluenza": "hpiv",
@@ -43,7 +44,7 @@ GEOS = {
     "saskatchewan":"sk",
     "alberta": "ab",
     "british columbia" :"bc",
-    "yukon" : "yk",
+    "yukon" : "yt",
     "northwest territories" : "nt",
     "nunavut" : "nu",
     "canada":"ca",
@@ -123,7 +124,7 @@ LOC_CORRECTION = {
     'ab':'province',
     'nl':'province',
     'nt':'territory',
-    'yk':'territory',
+    'yt':'territory',
     'nu':'territory',
     'atlantic':'region',
     'prairies':'region',
@@ -160,7 +161,8 @@ HISTORIC_SEASON_URL = (HISTORIC_SEASON_REPORTS_URL.format(year_range = year_rang
         "2020-2021",
         "2021-2022",
         "2022-2023",
-        "2023-2024"
+        "2023-2024",
+        "2024-2025"
         )
 )
 
@@ -224,7 +226,9 @@ def get_revised_data(base_url):
     # Get update date
     update_date_url =  base_url + DASHBOARD_UPDATE_DATE_FILE
     update_date_url_response = requests.get(update_date_url, headers=headers)
-    update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d") #"%m/%d/%Y %H:%M:%S"
+    update_date = datetime.strptime(update_date_url_response.text, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
+
+    #update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d") #"%m/%d/%Y %H:%M:%S"
 
     # Get update data
     url = base_url+DASHBOARD_DATA_FILE
@@ -318,7 +322,7 @@ def get_report_season_years(soup):
     canonical_url = str(soup.find_all('link',rel="canonical"))
     # The season range is in YYYY-YYYY format
     matches = re.search("20[0-9]{2}-20[0-9]{2}",canonical_url)
-    print(matches)
+    #print(matches)
     if matches:
         season = matches.group(0)
     years=season.split("-")
@@ -988,7 +992,7 @@ def get_season_reports(url):
 
     # write files to csvs
             # create path to save files
-    if season[0] != 2024:
+    if season[0] != 2025:
         path = "./auxiliary-data/target-data-archive/season_" + season[0]+"_"+season[1]
         path_aux  = path
     else:
@@ -1042,7 +1046,7 @@ def main():
                 warnings.simplefilter("ignore", category=FutureWarning)
                 warnings.simplefilter("ignore", category=DeprecationWarning)
                 # Check if previous seasons' lab data exists
-                if os.path.exists('./auxiliary-data/target-data-archive/season_2023_2024/target_rvdss_data.csv')==False:
+                if os.path.exists('./auxiliary-data/target-data-archive/season_2024_2025/target_rvdss_data.csv')==False:
                     [get_season_reports(url) for url in HISTORIC_SEASON_URL if url not in HISTORIC_SEASON_URL_CHECKPOINT]
             break
         except requests.exceptions.RequestException as e:
@@ -1057,7 +1061,7 @@ def main():
 
 
 	# Check if the directory exists, and if not, create it
-    directory = './target-data/season_2024_2025/'
+    directory = './target-data/season_2025_2026/'
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -1070,7 +1074,10 @@ def main():
         # Get update date
         update_date_url =  base_url + "RVD_UpdateDate.csv"
         update_date_url_response = requests.get(update_date_url, headers=headers)
-        update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d")
+        #print(update_date_url_response.text)
+        update_date = datetime.strptime(update_date_url_response.text, "%Y-%m-%d %H:%M:%S")
+
+        #update_date = datetime.strptime(update_date_url_response.text,"%m/%d/%Y %H:%M:%S").strftime("%Y-%m-%d")
 
         # Get current week and year
         summary_url =  base_url + "RVD_SummaryText.csv"
@@ -1115,7 +1122,7 @@ def main():
         df_weekly = df_weekly.rename(columns={'date':'time_value','week':'epiweek'})
         #print(df_weekly.columns)
         df_weekly['epiweek'] = df_weekly['epiweek'].astype(str)
-        df_weekly['epiweek'] = '2024' + df_weekly['epiweek']
+        df_weekly['epiweek'] = '2025' + df_weekly['epiweek']
 
         if df_weekly.columns.isin(["weekorder","date","week"]).all():
             df_weekly=df_weekly.drop(["weekorder","date","week"],axis=1)
@@ -1123,7 +1130,7 @@ def main():
         return(df_weekly)
 
 
-    weekly_data = get_weekly_data2(DASHBOARD_BASE_URL,2024).set_index(['epiweek', 'time_value', 'issue', 'geo_type', 'geo_value'])
+    weekly_data = get_weekly_data2(DASHBOARD_BASE_URL,2025).set_index(['epiweek', 'time_value', 'issue', 'geo_type', 'geo_value'])
     positive_data = get_revised_data(DASHBOARD_BASE_URL)
     # print('weekly_data cols:', weekly_data.columns)
     # print('positive_data cols:', positive_data.columns)
@@ -1132,12 +1139,14 @@ def main():
     weekly_data, positive_data = process_tables(weekly_data, positive_data, COL_MAPPERS, viruses)
 
 
-    path1 = './auxiliary-data/season_2024_2025_raw_files/respiratory_detections.csv'
-    path2 = './auxiliary-data/season_2024_2025_raw_files/positive_tests.csv'
+    path1 = './auxiliary-data/season_2025_2026_raw_files/respiratory_detections.csv'
+    path2 = './auxiliary-data/season_2025_2026_raw_files/positive_tests.csv'
 
-            
+
+    if os.path.exists('./auxiliary-data/season_2025_2026_raw_files/')==False:
+        os.makedirs('./auxiliary-data/season_2025_2026_raw_files/')
+
     if os.path.exists(path1)==False:
-        os.makedirs('./auxiliary-data/season_2024_2025_raw_files/')
         weekly_data.to_csv(path1,index=True)
         old_detection_data = weekly_data
     else:
@@ -1162,7 +1171,10 @@ def main():
 
     
     concatenated_table = concatenated_table.reset_index()
-    concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
+    #print(concatenated_table['issue'])
+    #concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'])
+    concatenated_table['issue'] = pd.to_datetime(concatenated_table['issue'], format='mixed', errors='coerce')
+
 
     # Update the geo_type based on LOC_CORRECTION values
     concatenated_table = concatenated_table[concatenated_table['geo_value'].isin(LOC_CORRECTION.keys())]
@@ -1171,7 +1183,7 @@ def main():
     concatenated_table = concatenated_table.groupby(['time_value', 'geo_type', 'geo_value']).apply(lambda x: x.bfill()).sort_values(by='issue', ascending=False)
     concatenated_table = concatenated_table.drop_duplicates(subset=['time_value', 'geo_type', 'geo_value'], keep='first')
 
-    concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore')
+    concatenated_table = concatenated_table.drop(columns=['issue'], errors='ignore') 
     concatenated_table = concatenated_table.drop(columns=['epiweek','week','date','weekorder'], errors='ignore')
     
     #concatenated_table.to_csv('./auxiliary-data/season_2024_2025_raw_files/raw.csv', index=False)
@@ -1182,8 +1194,12 @@ def main():
         elif 'pct_positive' in col:
             # Round percentage columns to 2 decimal places
             concatenated_table[col] = concatenated_table[col].round(2)
-		
-    concatenated_table.to_csv('./target-data/season_2024_2025/target_rvdss_data.csv', index=False)
+	
+    concatenated_table = concatenated_table.reset_index(drop=True)
+    #print(concatenated_table)
+    concatenated_table = concatenated_table.sort_values('time_value', ascending=False)
+
+    concatenated_table.to_csv('./target-data/season_2025_2026/target_rvdss_data.csv', index=False)
    
 if __name__ == '__main__':
     main()
