@@ -1,9 +1,9 @@
 name: Combine all model outputs and target data
 
 on:
-  schedule:
+  #schedule:
     #Sunday at 1:00 AM 
-    - cron: '0 1 * * 0'
+    #- cron: '0 1 * * 0'
   workflow_dispatch: 
 
 jobs:
