@@ -1,10 +1,10 @@
-# [AI4Casting Hub – Respiratory Virus Detection Surveillance System (RVDSS) Data Forecasting (2024-2025)](https://4castinghub.uoguelph.ca/respiratory-virus-detections/)
-Welcome to the AI4Casting Hub's repository for the 2024-2025 Respiratory Virus Detection Surveillance System (RVDSS) Forecasting Challenge. This repository is dedicated to collecting weekly forecast data on respiratory virus detections across Canada. The challenge focuses on predicting the spread and detection of key respiratory viruses such as influenza, RSV, and COVID-19. RVDSS collects data from a network of laboratories across Canada, providing a valuable source of surveillance data to guide public health decisions.
+# [AI4Casting Hub – Respiratory Virus Detection Surveillance System (RVDSS) Data Forecasting (2025-2026)](https://4castinghub.uoguelph.ca/respiratory-virus-detections/)
+Welcome to the AI4Casting Hub's repository for the 2025-2026 Respiratory Virus Detection Surveillance System (RVDSS) Forecasting Challenge. This repository is dedicated to collecting weekly forecast data on respiratory virus detections across Canada. The challenge focuses on predicting the spread and detection of key respiratory viruses such as influenza, RSV, and COVID-19. RVDSS collects data from a network of laboratories across Canada, providing a valuable source of surveillance data to guide public health decisions.
 
 [**Link to AI4Casting Hub's RVDSS Forecasting Official Page**](https://4castinghub.uoguelph.ca/respiratory-virus-detections)
 
 ### Challenge Overview
-The AI4Casting Hub is organizing a collaborative nowcasting and forecasting challenge for respiratory virus detections using RVDSS data. The challenge starts on November 25, 2024, and runs until May 31, 2025.During this period, participating teams are asked to provide weekly probabilistic interval hindcasts, nowcasts and forecasts for respiratory virus detections, at national, provincial and regional levels.
+The AI4Casting Hub is organizing a collaborative nowcasting and forecasting challenge for respiratory virus detections using RVDSS data. The challenge starts on November 20, 2025, and runs until May 16, 2026. During this period, participating teams are asked to provide weekly probabilistic interval hindcasts, nowcasts and forecasts for respiratory virus detections, at national, provincial and regional levels.
 
 ### Forecasting Targets
 This challenge focuses on three primary targets:
@@ -20,8 +20,8 @@ Teams will be tasked with forecasting the number of virus detections for:
 These predictions will be evaluated against confirmed RVDSS surveillance data released by public health agencies across Canada. For detailed information regarding the forecasting targets refer [model-output/README.md](https://github.com/ai4castinghub/rvdss-forecast/tree/main/model-output/README.md) file.
 
 ### Key Dates
-* **Challenge Start Date**: November 25, 2024
-* **Challenge End Date**: May 31, 2025
+* **Challenge Start Date**: November 20, 2025
+* **Challenge End Date**: May 16, 2026
 * **Weekly Submission Deadline**: Saturdays at 11 PM Eastern Time (referred to as the "Forecast Due Date"). Submissions should cover the reference week ending on the Saturday following the Forecast Due Date.
 
 The reference week corresponds to the epidemiological week (EW) running from Sunday to Saturday. Teams are expected to submit forecasts for the end of the reference week and the following three weeks. While teams are encouraged to forecast for all targets and time horizons, it is not required to submit predictions for every time period or virus. Forecasts for the previous week’s virus detections (horizon -1) are optional and will not be included in the primary scoring but may be helpful for calibration.
