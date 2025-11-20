@@ -27,21 +27,15 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Update system packages
-        run: |
-          sudo apt-get update
-
-      # Install R deps (hubValidations, sessioninfo, epipredict, epiprocess) via pak
-      - name: Install R package dependencies with pak
-        run: |
-          install.packages("pak", repos = "https://cloud.r-project.org")
-          pak::pkg_install(c(
-            "hubverse-org/hubValidations",
-            "sessioninfo",
-            "cmu-delphi/epipredict@main",
-            "cmu-delphi/epiprocess@main"
-          ))
-        shell: Rscript {0}
+      # Install only the R deps needed for validation
+      - name: Install R package dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          pak-version: "devel"
+          dependencies: "false"
+          extra-packages: |
+            hubverse-org/hubValidations
+            any::sessioninfo
 
       # ---------- Git diff + path checks (PRs only) ----------
 
@@ -73,7 +67,7 @@ jobs:
             echo "All changes are within allowed directories."
           fi
 
-      # ---------- validations ----------
+      # ---------- Validations ----------
 
       - name: Run validations
         if: github.event_name == 'pull_request'
