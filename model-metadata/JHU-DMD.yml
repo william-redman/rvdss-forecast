@@ -17,7 +17,7 @@ model_contributors: [
 ]
 website_url: "https://wredman4.wixsite.com/wtredman"
 license: "CC-BY-4.0"
-team_funding: "ACCIDDA"
+team_funding: ""
 designated_model: true
 methods: "Dynamic mode decomposition for time-series."
 data_inputs: "Weekly RVDSS from ai4castinghub"
