@@ -32,12 +32,11 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           pak-version: "devel"
-          dependencies: "false"
-          extra-packages: |
+          packages: |
             hubverse-org/hubValidations
             any::sessioninfo
 
-      # ---------- Git diff + path checks (PRs only) ----------
+      # ---------- Git diff + path checks  ----------
 
       - name: Fetch base branch
         if: github.event_name == 'pull_request'
@@ -67,7 +66,7 @@ jobs:
             echo "All changes are within allowed directories."
           fi
 
-      # ---------- Validations ----------
+      # ----------  validations  ----------
 
       - name: Run validations
         if: github.event_name == 'pull_request'
