@@ -31,19 +31,19 @@ jobs:
         run: |
           sudo apt-get update
 
-      # install R deps, including GitHub remotes for epipredict / epiprocess
-      - name: Install R package dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          pak-version: "devel"
-          extra-repositories: 'https://hubverse-org.r-universe.dev'
-          extra-packages: |
-            any::hubValidations
-            any::sessioninfo
-            cmu-delphi/epipredict@main
-            cmu-delphi/epiprocess@main
+      # Install R deps (hubValidations, sessioninfo, epipredict, epiprocess) via pak
+      - name: Install R package dependencies with pak
+        run: |
+          install.packages("pak", repos = "https://cloud.r-project.org")
+          pak::pkg_install(c(
+            "hubverse-org/hubValidations",
+            "sessioninfo",
+            "cmu-delphi/epipredict@main",
+            "cmu-delphi/epiprocess@main"
+          ))
+        shell: Rscript {0}
 
-      # ---------- Git diff + path checks  ----------
+      # ---------- Git diff + path checks (PRs only) ----------
 
       - name: Fetch base branch
         if: github.event_name == 'pull_request'
@@ -73,7 +73,7 @@ jobs:
             echo "All changes are within allowed directories."
           fi
 
-      # ----------  validations  ----------
+      # ---------- validations ----------
 
       - name: Run validations
         if: github.event_name == 'pull_request'
